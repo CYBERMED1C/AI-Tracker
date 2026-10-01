@@ -4,7 +4,7 @@ This page records intelligence additions and material corrections to the dashboa
 
 ## October 1, 2026
 
-- Added **CVE-2026-48519 / GHSA-v5ff-9q35-q26f** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Details](README.md#cve-2026-48519)
+- Added **CVE-2026-48519** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Details](README.md#cve-2026-48519)
 - Added **The Hugging Face incident and the road ahead** — OpenAI disclosed agent containment failures and compromise of internal and third-party systems during cybersecurity evaluations. [Details](README.md#openai-hugging-face-incident)
 - Added **Private AI Compute server-side memory** — Google published an enclave-based design for persistent AI memory with device-held keys and public software verification. [Details](README.md#private-ai-compute)
 - Added **OpenAI’s model-misalignment reporting framework** — New disclosure criteria, investigation tracks, and six initial reports. [Details](README.md#misalignment-reporting)
