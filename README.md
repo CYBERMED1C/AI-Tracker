@@ -10,7 +10,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 >
 > **Last checked:** October 1, 2026 at 4:48 PM PDT
 >
-> **Last updated:** October 1, 2026 at 4:53 PM PDT
+> **Last updated:** October 1, 2026 at 4:56 PM PDT
 >
 > **Last added:**
 > - **CVE-2026-48519 / GHSA-v5ff-9q35-q26f** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
@@ -46,7 +46,8 @@ Priorities reflect exploitation evidence and likely deployment impact—not CVSS
 <a id="cve-2026-64849"></a>
 ### 🔴 P0 · MLflow webhook SSRF
 
-**CVE-2026-64849 · GHSA-7gwp-5pfp-969j · CVSS 3.1: 8.6 High**
+**Severity:** High — 8.6/10 (CVSS 3.1)  
+**Vulnerability ID:** CVE-2026-64849
 
 An attacker who can reach the MLflow Tracking Server can use webhook redirects to read responses from internal, loopback, or cloud-metadata services.
 
@@ -59,7 +60,8 @@ An attacker who can reach the MLflow Tracking Server can use webhook redirects t
 <a id="cve-2025-62593"></a>
 ### 🔴 P0 · Ray browser-assisted remote code execution
 
-**CVE-2025-62593 · GHSA-q279-jhrf-cc6v · CVSS 4.0: 9.4 Critical**
+**Severity:** Critical — 9.4/10 (CVSS 4.0)  
+**Vulnerability ID:** CVE-2025-62593
 
 A malicious webpage can combine DNS rebinding with weak browser-request checks to reach Ray job APIs and execute code on a workstation or network-adjacent node.
 
@@ -72,7 +74,8 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 <a id="cve-2026-48519"></a>
 ### 🟠 P1 · Langflow public-flow remote code execution
 
-**CVE-2026-48519 · GHSA-v5ff-9q35-q26f · CVSS 3.1: 9.6 Critical**
+**Severity:** Critical — 9.6/10 (CVSS 3.1)  
+**Vulnerability ID:** CVE-2026-48519
 
 A public Shareable Playground can accept attacker-controlled custom Python node code through its public build endpoint and execute it on the server.
 
@@ -85,7 +88,8 @@ A public Shareable Playground can accept attacker-controlled custom Python node 
 <a id="cve-2026-54745"></a>
 ### 🟠 P1 · Kubeflow Pipelines pre-auth SSRF and HTTP smuggling
 
-**CVE-2026-54745 · GHSA-gqww-5pj5-8fq7 · CVSS 3.1: 10.0 Critical**
+**Severity:** Critical — 10.0/10 (CVSS 3.1)  
+**Vulnerability ID:** CVE-2026-54745
 
 The frontend `/_proxy/` route can forward unauthenticated requests to cluster-internal services—even when `ENABLE_AUTHZ=true`—putting cloud credentials and internal APIs at risk.
 
@@ -98,7 +102,8 @@ The frontend `/_proxy/` route can forward unauthenticated requests to cluster-in
 <a id="cve-2026-44182"></a>
 ### 🟠 P1 · Jupyter Enterprise Gateway Kubernetes manifest injection
 
-**CVE-2026-44182 · GHSA-cfw7-6c5v-2wjq · CVSS 4.0: 10.0 Critical**
+**Severity:** Critical — 10.0/10 (CVSS 4.0)  
+**Vulnerability ID:** CVE-2026-44182
 
 Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, create privileged workloads, and potentially compromise notebook worker nodes or the cluster.
 
