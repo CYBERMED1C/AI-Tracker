@@ -4,8 +4,10 @@ A source-linked learning dashboard for AI engineers and security teams. It highl
 
 > [!IMPORTANT]
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open an item's source and verify its publication date before taking action.
-
-**Last updated:** October 1, 2026 · See the [update history](CHANGELOG.md).
+>
+> **Last updated:** October 1, 2026
+>
+> **Last added:** Update-history tracker — find it in [CHANGELOG.md](CHANGELOG.md).
 
 ## Top 5 AI security advisories
 

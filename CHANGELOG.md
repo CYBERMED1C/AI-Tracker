@@ -12,3 +12,4 @@ This log records material changes to the public AI Security Intelligence Dashboa
 - Verified the initial dashboard against EchelonGraph, AI.gov, official model-lab sources, and curated GitHub projects.
 - Removed the collector source, tests, stored data, and GitHub Actions automation so the repository contains only public-facing information and this update history.
 - Removed local-use instructions and the permissive software license; the repository is provided for viewing and educational reference only.
+- Added a compact “Last updated / Last added” summary beneath the README's Important notice.
