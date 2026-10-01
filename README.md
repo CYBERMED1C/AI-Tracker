@@ -98,18 +98,9 @@ Official government notices, lab publications, and releases from established AI-
 - ✅ **GitHub project releases** — Curated project releases verified during initial build
 <!-- dashboard:health:end -->
 
-## How the daily update works
+## About this dashboard
 
-The GitHub Actions workflow runs at both possible UTC equivalents of 10:00 a.m. Pacific and matches the scheduled UTC slot to the current `America/Los_Angeles` offset, handling daylight-saving changes even when GitHub queues a run. It also supports manual runs. Every scheduled run updates the timestamp, rebuilds `data/dashboard.json`, rewrites only the marked dashboard sections above, and commits the result to the repository's default branch.
-
-The updater uses public read-only sources. It contains no Shodan integration and needs no Shodan secret. `GITHUB_TOKEN` is supplied automatically by Actions and is used only to push the generated README and data snapshot.
-
-### Run locally
-
-```bash
-python src/update_dashboard.py
-python -m unittest discover -s tests -v
-```
+This public learning resource refreshes daily at 10:00 a.m. Pacific. It is designed to help AI engineers and security teams quickly understand important developments from trusted sources.
 
 ### Ranking and trust policy
 
@@ -120,6 +111,6 @@ python -m unittest discover -s tests -v
 - If every source for a section fails, the last successful items are retained and source health is marked with a warning.
 - This project does not perform active scanning, exploit validation, or automated remediation.
 
-## License
+## Use notice
 
-The collector code is released under the [MIT License](LICENSE). Upstream data remains subject to each source's terms.
+This repository is published for viewing and educational reference only. All rights are reserved; no license is granted to reuse, modify, distribute, or republish its code or original content. Linked upstream information remains subject to each source's own terms.
