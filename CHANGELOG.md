@@ -13,3 +13,4 @@ This log records material changes to the public AI Security Intelligence Dashboa
 - Removed the collector source, tests, stored data, and GitHub Actions automation so the repository contains only public-facing information and this update history.
 - Removed local-use instructions and the permissive software license; the repository is provided for viewing and educational reference only.
 - Added a compact “Last updated / Last added” summary beneath the README's Important notice.
+- Set “Last added” to identify each new intelligence item, when it was added, a short description, and where its details appear in the dashboard.

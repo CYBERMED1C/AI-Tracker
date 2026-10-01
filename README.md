@@ -7,7 +7,11 @@ A source-linked learning dashboard for AI engineers and security teams. It highl
 >
 > **Last updated:** October 1, 2026
 >
-> **Last added:** Update-history tracker — find it in [CHANGELOG.md](CHANGELOG.md).
+> **Last added:**
+> - **CVE-2026-64849** · Added October 1, 2026 — Critical MLflow webhook SSRF. [Details](#top-5-ai-security-advisories)
+> - **AI executive order** · Added October 1, 2026 — Promoting Advanced AI Innovation and Security. [Details](#latest-3-aigov-executive-orders)
+>
+> See the complete [update history](CHANGELOG.md).
 
 ## Top 5 AI security advisories
 
