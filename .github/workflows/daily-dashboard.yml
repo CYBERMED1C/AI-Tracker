@@ -1,8 +1,8 @@
-name: Daily dashboard health
+name: Refresh AI security dashboard
 
 on:
   schedule:
-    # 10:00 a.m. Pacific is 17:00 UTC during PDT and 18:00 UTC during PST.
+    # 10:00 Pacific is 17:00 UTC during PDT and 18:00 UTC during PST.
     - cron: "0 17 * * *"
     - cron: "0 18 * * *"
   workflow_dispatch:
@@ -11,18 +11,23 @@ permissions:
   contents: write
 
 concurrency:
-  group: daily-dashboard-health
+  group: daily-ai-security-dashboard
   cancel-in-progress: false
 
 jobs:
-  heartbeat:
+  refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Select the 10 a.m. Pacific run
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Enforce 10 a.m. Pacific schedule
         id: pacific_time
         shell: bash
         run: |
@@ -36,19 +41,18 @@ jobs:
             echo "run=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Update dashboard health date
+      - name: Refresh dashboard
         if: steps.pacific_time.outputs.run == 'true'
-        shell: bash
-        run: |
-          pacific_date="$(TZ=America/Los_Angeles date '+%B %-d, %Y')"
-          sed -i "s|^> \*\*Dashboard health:\*\*.*$|> **Dashboard health:** ✅ Status as of ${pacific_date}|" README.md
+        env:
+          TZ: America/Los_Angeles
+        run: python src/update_dashboard.py
 
-      - name: Commit daily heartbeat
+      - name: Commit daily snapshot
         if: steps.pacific_time.outputs.run == 'true'
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "chore: dashboard health $(TZ=America/Los_Angeles date +%F)"
+          git add README.md CHANGELOG.md data/dashboard.json
+          git commit -m "chore: refresh AI security dashboard $(TZ=America/Los_Angeles date +%F)"
           git push

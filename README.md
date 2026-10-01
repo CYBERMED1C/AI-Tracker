@@ -2,6 +2,7 @@
 
 A source-linked learning dashboard for AI engineers and security teams. It highlights actionable AI ecosystem vulnerabilities, U.S. AI policy, major frontier-model changes, and noteworthy security projects—without collecting targets or scanning internet infrastructure.
 
+<!-- dashboard:updated:start -->
 > [!IMPORTANT]
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open an item's source and verify its publication date before taking action.
 >
@@ -10,56 +11,67 @@ A source-linked learning dashboard for AI engineers and security teams. It highl
 > **Last updated:** October 1, 2026
 >
 > **Last added:**
-> - **CVE-2026-64849** · Added October 1, 2026 — Critical MLflow webhook SSRF. [Details](#top-5-ai-security-advisories)
-> - **AI executive order** · Added October 1, 2026 — Promoting Advanced AI Innovation and Security. [Details](#latest-3-aigov-executive-orders)
+> - **CVE-2025-62593** · Added October 1, 2026 — Ray-Project Ray Code Injection Vulnerability. [Details](#top-5-ai-security-advisories)
+> - **Introducing GPT-6.1 Sol** · Added October 1, 2026 — Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token…. [Details](#major-frontier-model-updates)
+> - **Introducing GPT-6 Sol and Luna** · Added October 1, 2026 — Meet GPT-6 Sol and Luna, two models that bring frontier intelligence to everyday work with different balances of capability and cost. [Details](#major-frontier-model-updates)
+> - **Disrupting a coordinated model-distillation campaign** · Added October 1, 2026 — Learn how OpenAI disrupted a campaign to extract protected model reasoning and is strengthening defenses against adversarial distillation. [Details](#major-ai-security-news-and-projects)
 >
 > See the complete [update history](CHANGELOG.md).
+<!-- dashboard:updated:end -->
 
 ## Top 5 AI security advisories
 
 Ranked by known exploitation, EchelonGraph risk, exploit evidence, severity, and recency. Results are limited to vulnerabilities that match widely used AI/ML frameworks, serving stacks, orchestration tools, or model infrastructure.
 
+<!-- dashboard:advisories:start -->
 | Priority | Advisory | Severity | Published | Source |
 | --- | --- | --- | --- | --- |
-| 100/100 | [CVE-2026-64849: MLflow webhook test endpoint SSRF](https://echelongraph.io/pulse/CVE-2026-64849) | CRITICAL | 2026-08-17 | EchelonGraph |
-| 95/100 | [CVE-2026-27966: Langflow CSV Agent prompt injection to RCE](https://echelongraph.io/pulse/CVE-2026-27966) | CRITICAL | 2026-02-26 | EchelonGraph |
-| 76/100 | [CVE-2026-54745: Kubeflow Pipelines unauthenticated SSRF](https://echelongraph.io/pulse/CVE-2026-54745) | CRITICAL | 2026-08-28 | EchelonGraph |
-| 76/100 | [CVE-2026-44182: Jupyter Enterprise Gateway YAML injection](https://echelongraph.io/pulse/CVE-2026-44182) | CRITICAL | 2026-06-03 | EchelonGraph |
-| 76/100 | [CVE-2026-44181: Jupyter Enterprise Gateway template injection](https://echelongraph.io/pulse/CVE-2026-44181) | CRITICAL | 2026-06-03 | EchelonGraph |
+| 100/100 | [CVE-2026-64849: MLflow Server-Side Request Forgery Vulnerability](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | KNOWN EXPLOITED | 2026-08-19 | CISA KEV |
+| 100/100 | [CVE-2025-62593: Ray-Project Ray Code Injection Vulnerability](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | KNOWN EXPLOITED | 2026-08-17 | CISA KEV |
+| 95/100 | [CVE-2026-27966: Langflow is a tool for building and deploying AI-powered agents and workflows](https://echelongraph.io/pulse/CVE-2026-27966) | CRITICAL | 2026-02-26 | EchelonGraph |
+| 76/100 | [CVE-2026-54745: Kubeflow Pipelines enables users to build and deploy portable, scalable machine learning workflows](https://echelongraph.io/pulse/CVE-2026-54745) | CRITICAL | 2026-08-28 | EchelonGraph |
+| 76/100 | [CVE-2026-44182: Jupyter Enterprise Gateway launches remote Jupyter Notebook kernels across distributed clusters like Apache Spark, Kubernetes, and Docker Swarm](https://echelongraph.io/pulse/CVE-2026-44182) | CRITICAL | 2026-06-03 | EchelonGraph |
+<!-- dashboard:advisories:end -->
 
 ## Latest 3 AI.gov executive orders
 
 These are the three most recent entries in the Executive Orders section of AI.gov, linked to the authoritative order.
 
+<!-- dashboard:orders:start -->
 | Executive order | Date | Source |
 | --- | --- | --- |
-| [Promoting Advanced Artificial Intelligence Innovation and Security](https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/) | 2026-06-02 | AI.gov |
-| [Ensuring a National Policy Framework for Artificial Intelligence](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/) | 2025-12-11 | AI.gov |
+| [Promoting Advanced AI Innovation and Security](https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/) | 2026-06-02 | AI.gov |
+| [Ensuring a National Policy Framework for AI](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/) | 2025-12-11 | AI.gov |
 | [Launching the Genesis Mission](https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/) | 2025-11-24 | AI.gov |
+<!-- dashboard:orders:end -->
 
 ## Major frontier-model updates
 
 Only official announcements involving leading model families are eligible: OpenAI GPT/Codex, Anthropic Claude, Google Gemini/Gemma, Meta Llama, Mistral/Mixtral, DeepSeek, xAI Grok, Microsoft Phi, Amazon Nova, Cohere Command, and Alibaba Qwen. Routine product posts are excluded.
 
+<!-- dashboard:models:start -->
 | Major model update | What changed | Date | Official source |
 | --- | --- | --- | --- |
-| [Gemini 4 Argon](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) | A phased frontier model for long-horizon software engineering, enterprise knowledge work, and defensive cybersecurity; initially rolling out to trusted cyber defenders. | 2026-09-30 | Google DeepMind |
-| [Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5) | A faster, lower-cost Sonnet with major agentic-coding gains, stronger long-horizon work and image understanding, plus frontier-model cyber safeguards. | 2026-09-28 | Anthropic |
-| [Claude Opus 5.5](https://www.anthropic.com/claude-opus-5-5) | Anthropic's leading model for agentic coding, computer use, and knowledge work, with lower cost, faster output, stronger prompt-injection resistance, and expanded safeguards. | 2026-09-22 | Anthropic |
-| [Gemini 3.8 Live and Live Extended Thinking](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/) | Production voice models with real-time visual grounding, parallel tool use, and extended reasoning for complex background tasks. | 2026-09-15 | Google DeepMind |
-| [GPT-6 Astra](https://openai.com/index/safety-overview-gpt-6-astra/) | OpenAI's most capable broadly deployed model, with advances in coding, research, computer use, multi-step work, and critical-level cybersecurity capability with strengthened safeguards. | 2026-09-03 | OpenAI |
+| [Gemini 4 Argon: our next era of frontier intelligence](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) | Stylized promotional blog key art graphic with modern editorial branding and the text "Gemini 4 Argon" | 2026-09-30 | Google DeepMind |
+| [Introducing GPT-6.1 Sol](https://openai.com/index/introducing-gpt-6-1-sol) | Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices. | 2026-09-29 | OpenAI |
+| [Introducing Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5) | A clear upgrade over Sonnet 5 that runs 30% faster and costs up to 30% less for most work. | 2026-09-28 | Anthropic |
+| [Introducing GPT-6 Sol and Luna](https://openai.com/index/introducing-gpt-6-sol-and-luna) | Meet GPT-6 Sol and Luna, two models that bring frontier intelligence to everyday work with different balances of capability and cost. | 2026-09-22 | OpenAI |
+| [Introducing Claude Opus 5.5](https://www.anthropic.com/claude-opus-5-5) | Opus 5.5 performs at the level of Claude Fable 5.1 on most work and costs 40% less to run than Opus 5. | 2026-09-22 | Anthropic |
+<!-- dashboard:models:end -->
 
 ## Major AI security news and projects
 
 Official government notices, lab publications, and releases from established AI-security projects.
 
+<!-- dashboard:news:start -->
 | News / project | Why it matters | Date | Source |
 | --- | --- | --- | --- |
-| [Anthropic: Detecting and countering misuse of AI](https://www.anthropic.com/threat-intelligence-report-september-2026) | Threat-intelligence case studies describe how malicious use of Claude evolved during 2026 and the operations Anthropic disrupted. | 2026-09-10 | Anthropic |
-| [garak v0.17.0](https://github.com/NVIDIA/garak/releases/tag/v0.17.0) | Adds EU AI Act risk mapping and improves agent, exfiltration, package-hallucination, Ollama, and OpenAI-compatible endpoint probes and detectors. | 2026-09-09 | NVIDIA garak |
-| [Anthropic alignment assessment of cybersecurity incidents](https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents) | An assessment of four incidents in which evaluation models obtained unauthorized live-internet access, including containment and alignment lessons for AI evaluators. | 2026-09-09 | Anthropic |
-| [OpenAI Daybreak for Frontline Defenders](https://openai.com/index/daybreak-for-frontline-defenders/) | A $1 billion initiative for subsidized access, training, support, and partnerships intended to put frontier cyber capabilities in defenders' hands. | 2026-09-03 | OpenAI |
-| [NIST seeks comment on AI for Cybersecurity Framework 2.0](https://www.nist.gov/news-events/news-updates/topic/2753736) | NIST released a draft publication on using AI for Cybersecurity Framework 2.0 analysis and reporting and requested public feedback. | 2026-08-19 | NIST |
+| [Disrupting a coordinated model-distillation campaign](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign) | Learn how OpenAI disrupted a campaign to extract protected model reasoning and is strengthening defenses against adversarial distillation. | 2026-09-30 | OpenAI |
+| [v0.17.0](https://github.com/NVIDIA/garak/releases/tag/v0.17.0) | What's Changed New features EU AI Act Mapping by @erickgalinkin in #2094 This new mapping provides reference tags to surface and group probes results that relate to various categories of risk called out in the EU AI Act. Improved plugins F… | 2026-09-09 | garak |
+| [v0.1.12](https://github.com/trailofbits/fickling/releases/tag/v0.1.12) | Security Fix MLAllowlist shadowing ( 41ce7cb ). Thanks to @reapermunky for the report! ( GHSA-cffv-grgg-g429 ) This fix makes MLAllowlist functional again, and opt-in as originally intended. If you need to scan ML pickles with an import al… | 2026-06-26 | Fickling |
+| [v0.8.8](https://github.com/protectai/modelscan/releases/tag/v0.8.8) | Bug fixes | 2026-02-18 | ModelScan |
+| [DevDay 2026 Recap](https://openai.com/index/devday-2026-recap) | Explore more than 20 announcements from OpenAI DevDay 2026, including GPT-6 Astra, ChatGPT, Codex, APIs, security, and new tools for builders. | 2026-09-29 | OpenAI |
+<!-- dashboard:news:end -->
 
 ## Trusted government and standards sources
 
@@ -89,10 +101,21 @@ Official government notices, lab publications, and releases from established AI-
 
 ## Source verification
 
-- ✅ **EchelonGraph** — Public CVE API verified during initial build
-- ✅ **AI.gov** — Latest executive-order list verified during initial build
-- ✅ **Official lab sources** — Current model and security announcements verified during initial build
-- ✅ **GitHub project releases** — Curated project releases verified during initial build
+<!-- dashboard:health:start -->
+- ✅ **EchelonGraph** — 179 AI-related records
+- ✅ **CISA KEV** — 2 AI-related records
+- ✅ **GitHub Advisories** — 2 AI-related records
+- ✅ **AI.gov** — 3 executive orders
+- ✅ **OpenAI** — 30 feed entries
+- ✅ **Anthropic** — 5 feed entries
+- ✅ **Google DeepMind** — 20 feed entries
+- ✅ **Meta AI** — 3 feed entries
+- ✅ **Microsoft AI** — 10 feed entries
+- ✅ **NIST** — 0 feed entries
+- ✅ **ModelScan** — 10 feed entries
+- ✅ **garak** — 10 feed entries
+- ✅ **Fickling** — 10 feed entries
+<!-- dashboard:health:end -->
 
 ## About this dashboard
 
