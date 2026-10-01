@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-01T10:01:10-07:00",
+  "advisories": [
+    {
+      "id": "CVE-2026-64849",
+      "title": "CVE-2026-64849: MLflow webhook test endpoint SSRF",
+      "summary": "MLflow before 3.15.0 validates only the initial webhook URL, then follows redirects without pinning the validated address. An unauthenticated attacker may reach internal or cloud metadata services. Upgrade to 3.15.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.3,
+      "risk": 97,
+      "kev": true,
+      "exploit": true,
+      "date": "2026-08-17",
+      "source": "EchelonGraph",
+      "url": "https://echelongraph.io/pulse/CVE-2026-64849"
+    },
+    {
+      "id": "CVE-2026-27966",
+      "title": "CVE-2026-27966: Langflow CSV Agent prompt injection to RCE",
+      "summary": "Langflow before 1.8.0 hardcodes dangerous code execution for its CSV Agent, exposing LangChain's Python REPL to prompt injection and arbitrary server-side commands. Upgrade to 1.8.0.",
+      "severity": "CRITICAL",
+      "cvss": 9.8,
+      "risk": 85,
+      "kev": false,
+      "exploit": true,
+      "date": "2026-02-26",
+      "source": "EchelonGraph",
+      "url": "https://echelongraph.io/pulse/CVE-2026-27966"
+    },
+    {
+      "id": "CVE-2026-54745",
+      "title": "CVE-2026-54745: Kubeflow Pipelines unauthenticated SSRF",
+      "summary": "Kubeflow Pipelines before 2.17.0 allows unauthenticated proxy requests to attacker-selected HTTP/S targets, potentially exposing cloud metadata credentials and cluster-internal APIs. Upgrade to 2.17.0.",
+      "severity": "CRITICAL",
+      "cvss": 10.0,
+      "risk": 76,
+      "kev": false,
+      "exploit": false,
+      "date": "2026-08-28",
+      "source": "EchelonGraph",
+      "url": "https://echelongraph.io/pulse/CVE-2026-54745"
+    },
+    {
+      "id": "CVE-2026-44182",
+      "title": "CVE-2026-44182: Jupyter Enterprise Gateway YAML injection",
+      "summary": "Jupyter Enterprise Gateway before 3.3.0 interpolates untrusted kernel environment variables into Kubernetes manifests without YAML-aware escaping, enabling privileged resource creation. Upgrade to 3.3.0.",
+      "severity": "CRITICAL",
+      "cvss": 10.0,
+      "risk": 76,
+      "kev": false,
+      "exploit": false,
+      "date": "2026-06-03",
+      "source": "EchelonGraph",
+      "url": "https://echelongraph.io/pulse/CVE-2026-44182"
+    },
+    {
+      "id": "CVE-2026-44181",
+      "title": "CVE-2026-44181: Jupyter Enterprise Gateway template injection",
+      "summary": "Jupyter Enterprise Gateway 2.0.0rc2 through 3.2.x permits Jinja template expressions in kernel environment variables, enabling Python and OS command execution in the gateway service. Upgrade to 3.3.0.",
+      "severity": "CRITICAL",
+      "cvss": 10.0,
+      "risk": 76,
+      "kev": false,
+      "exploit": false,
+      "date": "2026-06-03",
+      "source": "EchelonGraph",
+      "url": "https://echelongraph.io/pulse/CVE-2026-44181"
+    }
+  ],
+  "executive_orders": [
+    {
+      "title": "Promoting Advanced Artificial Intelligence Innovation and Security",
+      "date": "2026-06-02",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/",
+      "source": "AI.gov"
+    },
+    {
+      "title": "Ensuring a National Policy Framework for Artificial Intelligence",
+      "date": "2025-12-11",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/",
+      "source": "AI.gov"
+    },
+    {
+      "title": "Launching the Genesis Mission",
+      "date": "2025-11-24",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/",
+      "source": "AI.gov"
+    }
+  ],
+  "model_updates": [
+    {
+      "title": "Gemini 4 Argon",
+      "summary": "A phased frontier model for long-horizon software engineering, enterprise knowledge work, and defensive cybersecurity; initially rolling out to trusted cyber defenders.",
+      "date": "2026-09-30",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+      "source": "Google DeepMind"
+    },
+    {
+      "title": "Claude Sonnet 5.5",
+      "summary": "A faster, lower-cost Sonnet with major agentic-coding gains, stronger long-horizon work and image understanding, plus frontier-model cyber safeguards.",
+      "date": "2026-09-28",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "source": "Anthropic"
+    },
+    {
+      "title": "Claude Opus 5.5",
+      "summary": "Anthropic's leading model for agentic coding, computer use, and knowledge work, with lower cost, faster output, stronger prompt-injection resistance, and expanded safeguards.",
+      "date": "2026-09-22",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "source": "Anthropic"
+    },
+    {
+      "title": "Gemini 3.8 Live and Live Extended Thinking",
+      "summary": "Production voice models with real-time visual grounding, parallel tool use, and extended reasoning for complex background tasks.",
+      "date": "2026-09-15",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+      "source": "Google DeepMind"
+    },
+    {
+      "title": "GPT-6 Astra",
+      "summary": "OpenAI's most capable broadly deployed model, with advances in coding, research, computer use, multi-step work, and critical-level cybersecurity capability with strengthened safeguards.",
+      "date": "2026-09-03",
+      "url": "https://openai.com/index/safety-overview-gpt-6-astra/",
+      "source": "OpenAI"
+    }
+  ],
+  "news_projects": [
+    {
+      "title": "Anthropic: Detecting and countering misuse of AI",
+      "summary": "Threat-intelligence case studies describe how malicious use of Claude evolved during 2026 and the operations Anthropic disrupted.",
+      "date": "2026-09-10",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "source": "Anthropic"
+    },
+    {
+      "title": "garak v0.17.0",
+      "summary": "Adds EU AI Act risk mapping and improves agent, exfiltration, package-hallucination, Ollama, and OpenAI-compatible endpoint probes and detectors.",
+      "date": "2026-09-09",
+      "url": "https://github.com/NVIDIA/garak/releases/tag/v0.17.0",
+      "source": "NVIDIA garak"
+    },
+    {
+      "title": "Anthropic alignment assessment of cybersecurity incidents",
+      "summary": "An assessment of four incidents in which evaluation models obtained unauthorized live-internet access, including containment and alignment lessons for AI evaluators.",
+      "date": "2026-09-09",
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "source": "Anthropic"
+    },
+    {
+      "title": "OpenAI Daybreak for Frontline Defenders",
+      "summary": "A $1 billion initiative for subsidized access, training, support, and partnerships intended to put frontier cyber capabilities in defenders' hands.",
+      "date": "2026-09-03",
+      "url": "https://openai.com/index/daybreak-for-frontline-defenders/",
+      "source": "OpenAI"
+    },
+    {
+      "title": "NIST seeks comment on AI for Cybersecurity Framework 2.0",
+      "summary": "NIST released a draft publication on using AI for Cybersecurity Framework 2.0 analysis and reporting and requested public feedback.",
+      "date": "2026-08-19",
+      "url": "https://www.nist.gov/news-events/news-updates/topic/2753736",
+      "source": "NIST"
+    }
+  ],
+  "source_health": [
+    { "name": "EchelonGraph", "ok": true, "detail": "Public CVE API verified during initial build" },
+    { "name": "AI.gov", "ok": true, "detail": "Latest executive-order list verified during initial build" },
+    { "name": "Official lab sources", "ok": true, "detail": "Current model and security announcements verified during initial build" },
+    { "name": "GitHub project releases", "ok": true, "detail": "Curated project releases verified during initial build" }
+  ]
+}
