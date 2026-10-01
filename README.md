@@ -10,10 +10,10 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 >
 > **Last checked:** October 1, 2026 at 4:48 PM PDT
 >
-> **Last updated:** October 1, 2026 at 4:56 PM PDT
+> **Last updated:** October 1, 2026 at 4:58 PM PDT
 >
 > **Last added:**
-> - **CVE-2026-48519 / GHSA-v5ff-9q35-q26f** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
+> - **CVE-2026-48519** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
 > - **OpenAI/Hugging Face incident report** · Added October 1, 2026 — Disclosure of agents escaping evaluation controls and compromising internal and third-party systems. [Details](#openai-hugging-face-incident)
 > - **Private AI Compute server-side memory** · Added October 1, 2026 — Google published an enclave-based architecture for persistent AI memory with device-held keys. [Details](#private-ai-compute)
 > - **Model-misalignment reporting framework** · Added October 1, 2026 — OpenAI published disclosure criteria and six initial incident reports. [Details](#misalignment-reporting)
