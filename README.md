@@ -10,7 +10,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 >
 > **Last checked:** October 1, 2026 at 4:48 PM PDT
 >
-> **Last updated:** October 1, 2026 at 4:48 PM PDT
+> **Last updated:** October 1, 2026 at 4:53 PM PDT
 >
 > **Last added:**
 > - **CVE-2026-48519 / GHSA-v5ff-9q35-q26f** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
@@ -23,63 +23,90 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 
 ## Current AI security advisories
 
-These entries are ordered by confirmed exploitation first, then by deployment impact. CVSS scores are attributed to the named source; public proof-of-concept material is not treated as evidence of exploitation in the wild.
+> [!CAUTION]
+> **Patch first:** MLflow and Ray are in CISA’s Known Exploited Vulnerabilities catalog. Treat exposed instances as potential incident-response cases—not routine upgrades.
+
+**Status key:** 🔴 confirmed exploitation · 🟠 public proof of concept; no confirmed in-the-wild exploitation
 
 <!-- dashboard:advisories:start -->
-<a id="cve-2026-64849"></a>
-### CVE-2026-64849 / GHSA-7gwp-5pfp-969j — MLflow webhook SSRF
+### Triage view
 
-- **Impact and AI relevance:** A reachable MLflow Tracking Server can be made to follow redirects to internal, loopback, or cloud-metadata endpoints and return response bodies, exposing credentials and internal services used by ML engineering environments.
-- **Affected / fixed:** MLflow **3.10.0 through 3.14.x**; fixed in **3.15.0**. MLflow later documented additional IPv6-transition hardening in **3.16.0**, so 3.16.0 or later is the safer target.
-- **Severity:** **8.6 High, CVSS 3.1**, published by the MLflow maintainer advisory. Product-specific scores may differ; Red Hat rates affected OpenShift AI deployment contexts separately.
-- **Exploitation status:** **Confirmed exploited.** CISA added the CVE to KEV on **August 19, 2026**. A public exploit or scanner alone would not establish this status.
-- **Dates:** Maintainer advisory published **August 2, 2026**; CVE published **August 17, 2026**; follow-up hardening documented in **September 2026**.
-- **What to do:** Upgrade to **MLflow 3.16.0 or later**, restrict Tracking Server access to trusted networks, require authentication, and investigate exposed servers for unexpected webhook tests or access to metadata/internal endpoints.
-- **Sources:** [MLflow maintainer advisory](https://github.com/mlflow/mlflow/security/advisories/GHSA-7gwp-5pfp-969j) · [CISA KEV filtered entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-64849)
+| Priority | Product and risk | Exploitation | Affected → target | Immediate action |
+| --- | --- | --- | --- | --- |
+| **P0** | [MLflow: webhook SSRF](#cve-2026-64849) | 🔴 CISA KEV | 3.10.0–3.14.x → **3.16.0+** | Patch; restrict Tracking Server; investigate unexpected webhook activity |
+| **P0** | [Ray: browser-assisted RCE](#cve-2025-62593) | 🔴 CISA KEV | <2.52.0 → **2.52.0+** | Patch; enable token auth; investigate unauthorized jobs |
+| **P1** | [Langflow: public-flow RCE](#cve-2026-48519) | 🟠 Public PoC | ≤1.9.1 → **1.9.2+** | Patch; disable or restrict public sharing |
+| **P1** | [Kubeflow Pipelines: pre-auth SSRF](#cve-2026-54745) | 🟠 Public PoC | Frontend ≤2.16.0 → **2.17.0+** | Patch; block untrusted frontend access and sensitive egress |
+| **P1** | [Jupyter Enterprise Gateway: manifest injection](#cve-2026-44182) | 🟠 Public PoC | ≤3.2.3 → **3.3.0+** | Patch; constrain kernel launchers and Kubernetes permissions |
+
+Priorities reflect exploitation evidence and likely deployment impact—not CVSS alone.
+
+---
+
+<a id="cve-2026-64849"></a>
+### 🔴 P0 · MLflow webhook SSRF
+
+**CVE-2026-64849 · GHSA-7gwp-5pfp-969j · CVSS 3.1: 8.6 High**
+
+An attacker who can reach the MLflow Tracking Server can use webhook redirects to read responses from internal, loopback, or cloud-metadata services.
+
+- **Exposed if:** MLflow 3.10.0–3.14.x is reachable by an untrusted user or network.
+- **Do now:** Upgrade to **3.16.0 or later**; restrict and authenticate the Tracking Server.
+- **Look for:** Unexpected webhook tests, access to metadata addresses, or requests to internal-only services.
+- **Why P0:** CISA added this CVE to KEV on **August 19, 2026**.
+- **Evidence:** [Maintainer advisory](https://github.com/mlflow/mlflow/security/advisories/GHSA-7gwp-5pfp-969j) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-64849)
 
 <a id="cve-2025-62593"></a>
-### CVE-2025-62593 / GHSA-q279-jhrf-cc6v — Ray browser-assisted remote code execution
+### 🔴 P0 · Ray browser-assisted remote code execution
 
-- **Impact and AI relevance:** DNS rebinding combined with weak browser-request checks can let a malicious page reach unauthenticated Ray job APIs and execute code on a developer workstation or network-adjacent Ray node.
-- **Affected / fixed:** Ray **before 2.52.0**; fixed in **2.52.0**. Ray 2.52.0 also introduced optional token authentication.
-- **Severity:** **9.4 Critical, CVSS 4.0**, GitHub-reviewed maintainer advisory.
-- **Exploitation status:** **Confirmed exploited.** CISA added the CVE to KEV on **August 17, 2026**. The maintainer advisory also contains public proof-of-concept material, which is separate evidence.
-- **Dates:** Advisory and CVE published **November 26, 2025**; advisory updated **December 1, 2025**; CISA exploitation alert published **August 17, 2026**.
-- **What to do:** Upgrade to **Ray 2.52.0 or later**, enable token authentication where supported, keep dashboard/job APIs off untrusted networks, and review potentially exposed systems for unauthorized jobs.
-- **Sources:** [Ray maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA exploitation alert](https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog)
+**CVE-2025-62593 · GHSA-q279-jhrf-cc6v · CVSS 4.0: 9.4 Critical**
+
+A malicious webpage can combine DNS rebinding with weak browser-request checks to reach Ray job APIs and execute code on a workstation or network-adjacent node.
+
+- **Exposed if:** A user can browse attacker-controlled content while an unauthenticated Ray API before 2.52.0 is reachable.
+- **Do now:** Upgrade to **2.52.0 or later**, enable token authentication, and isolate dashboard/job APIs.
+- **Look for:** Unknown jobs, unfamiliar submissions, or unexpected dashboard/API access.
+- **Why P0:** CISA added this CVE to KEV on **August 17, 2026**.
+- **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA alert](https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog)
 
 <a id="cve-2026-48519"></a>
-### CVE-2026-48519 / GHSA-v5ff-9q35-q26f — Langflow Shareable Playground RCE
+### 🟠 P1 · Langflow public-flow remote code execution
 
-- **Impact and AI relevance:** A public Langflow flow can accept attacker-controlled custom Python node code through the public build endpoint, resulting in server-side code execution.
-- **Affected / fixed:** Langflow **1.9.1 and earlier**; fixed in **1.9.2**.
-- **Severity:** **9.6 Critical, CVSS 3.1**, GitHub-reviewed maintainer advisory.
-- **Exploitation status:** A public proof of concept is included in the advisory; **exploitation in the wild is not established**.
-- **Dates:** Maintainer advisory published **May 27, 2026**; GitHub review published **June 16, 2026**; last materially updated **July 20, 2026**.
-- **What to do:** Upgrade to **Langflow 1.9.2 or later**, disable or restrict public-flow sharing until patched, and review exposed deployments for unexpected public build requests and custom node code.
-- **Source:** [Langflow maintainer advisory](https://github.com/langflow-ai/langflow/security/advisories/GHSA-v5ff-9q35-q26f)
+**CVE-2026-48519 · GHSA-v5ff-9q35-q26f · CVSS 3.1: 9.6 Critical**
+
+A public Shareable Playground can accept attacker-controlled custom Python node code through its public build endpoint and execute it on the server.
+
+- **Exposed if:** Public-flow sharing is enabled on Langflow 1.9.1 or earlier.
+- **Do now:** Upgrade to **1.9.2 or later**; disable or restrict public sharing until patched.
+- **Look for:** Unexpected public build requests or unfamiliar custom node code.
+- **Exploitation:** Public PoC available; **no confirmed in-the-wild exploitation**.
+- **Evidence:** [Maintainer advisory](https://github.com/langflow-ai/langflow/security/advisories/GHSA-v5ff-9q35-q26f)
 
 <a id="cve-2026-54745"></a>
-### CVE-2026-54745 / GHSA-gqww-5pj5-8fq7 — Kubeflow Pipelines pre-auth SSRF and HTTP smuggling
+### 🟠 P1 · Kubeflow Pipelines pre-auth SSRF and HTTP smuggling
 
-- **Impact and AI relevance:** The Kubeflow Pipelines frontend `/_proxy/` route can forward unauthenticated requests, headers, and bodies to cluster-internal services even with `ENABLE_AUTHZ=true`, risking cloud credentials and Kubernetes or service APIs.
-- **Affected / fixed:** `ghcr.io/kubeflow/kfp-frontend` **2.16.0 and earlier**; fixed in **2.17.0**.
-- **Severity:** **10.0 Critical, CVSS 3.1**, maintainer advisory.
-- **Exploitation status:** The advisory demonstrates the issue with a public proof of concept; **exploitation in the wild is not established**.
-- **Dates:** Advisory published **July 12, 2026**.
-- **What to do:** Upgrade the frontend to **2.17.0 or later**. Until then, remove untrusted access to the frontend, apply network policy that blocks metadata and sensitive internal destinations, and do not rely on `ENABLE_AUTHZ=true` alone.
-- **Source:** [Kubeflow Pipelines maintainer advisory](https://github.com/kubeflow/pipelines/security/advisories/GHSA-gqww-5pj5-8fq7)
+**CVE-2026-54745 · GHSA-gqww-5pj5-8fq7 · CVSS 3.1: 10.0 Critical**
+
+The frontend `/_proxy/` route can forward unauthenticated requests to cluster-internal services—even when `ENABLE_AUTHZ=true`—putting cloud credentials and internal APIs at risk.
+
+- **Exposed if:** An untrusted user can reach `kfp-frontend` 2.16.0 or earlier.
+- **Do now:** Upgrade to **2.17.0 or later**; block untrusted access and egress to metadata or sensitive internal destinations.
+- **Look for:** Proxy requests targeting metadata IPs, Kubernetes APIs, or internal-only services.
+- **Exploitation:** Public PoC available; **no confirmed in-the-wild exploitation**.
+- **Evidence:** [Maintainer advisory](https://github.com/kubeflow/pipelines/security/advisories/GHSA-gqww-5pj5-8fq7)
 
 <a id="cve-2026-44182"></a>
-### CVE-2026-44182 / GHSA-cfw7-6c5v-2wjq — Jupyter Enterprise Gateway Kubernetes manifest injection
+### 🟠 P1 · Jupyter Enterprise Gateway Kubernetes manifest injection
 
-- **Impact and AI relevance:** Untrusted `KERNEL_*` environment values can alter rendered Kubernetes manifests, create privileged pods or additional resources, and potentially compromise worker nodes or the cluster hosting remote notebook kernels.
-- **Affected / fixed:** Jupyter Enterprise Gateway **3.2.3 and earlier**; fixed in **3.3.0**.
-- **Severity:** **10.0 Critical, CVSS 4.0**, maintainer advisory.
-- **Exploitation status:** The advisory contains reproducible proof-of-concept evidence; **exploitation in the wild is not established**.
-- **Dates:** Advisory published **June 3, 2026**; version 3.3.0 was released **June 1, 2026** with fixes for CVE-2026-44180, CVE-2026-44181, and CVE-2026-44182.
-- **What to do:** Upgrade to **3.3.0 or later**, limit who can launch kernels, constrain service-account permissions, enforce admission controls against privileged pods and host mounts, and review recently created resources.
-- **Sources:** [Jupyter Enterprise Gateway maintainer advisory](https://github.com/jupyter-server/enterprise_gateway/security/advisories/GHSA-cfw7-6c5v-2wjq) · [3.3.0 release notes](https://github.com/jupyter-server/enterprise_gateway/releases/tag/v3.3.0)
+**CVE-2026-44182 · GHSA-cfw7-6c5v-2wjq · CVSS 4.0: 10.0 Critical**
+
+Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, create privileged workloads, and potentially compromise notebook worker nodes or the cluster.
+
+- **Exposed if:** Untrusted users can launch kernels through Enterprise Gateway 3.2.3 or earlier.
+- **Do now:** Upgrade to **3.3.0 or later**; reduce service-account rights and enforce admission controls against privileged pods and host mounts.
+- **Look for:** Unexpected privileged pods, extra Kubernetes resources, host mounts, or unusual kernel environment values.
+- **Exploitation:** Reproducible PoC available; **no confirmed in-the-wild exploitation**.
+- **Evidence:** [Maintainer advisory](https://github.com/jupyter-server/enterprise_gateway/security/advisories/GHSA-cfw7-6c5v-2wjq) · [3.3.0 release notes](https://github.com/jupyter-server/enterprise_gateway/releases/tag/v3.3.0)
 <!-- dashboard:advisories:end -->
 
 ## AI security research, defensive tools, and significant releases
