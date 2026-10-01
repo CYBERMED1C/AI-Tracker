@@ -5,6 +5,8 @@ A source-linked learning dashboard for AI engineers and security teams. It highl
 > [!IMPORTANT]
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open an item's source and verify its publication date before taking action.
 >
+> **Dashboard health:** ✅ Status as of October 1, 2026
+>
 > **Last updated:** October 1, 2026
 >
 > **Last added:**

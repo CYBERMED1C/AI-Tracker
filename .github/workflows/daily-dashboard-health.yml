@@ -1,0 +1,54 @@
+name: Daily dashboard health
+
+on:
+  schedule:
+    # 10:00 a.m. Pacific is 17:00 UTC during PDT and 18:00 UTC during PST.
+    - cron: "0 17 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-dashboard-health
+  cancel-in-progress: false
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Select the 10 a.m. Pacific run
+        id: pacific_time
+        shell: bash
+        run: |
+          offset="$(TZ=America/Los_Angeles date +%z)"
+          scheduled="${{ github.event.schedule }}"
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || \
+                ( "$offset" == "-0700" && "$scheduled" == "0 17 * * *" ) || \
+                ( "$offset" == "-0800" && "$scheduled" == "0 18 * * *" ) ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update dashboard health date
+        if: steps.pacific_time.outputs.run == 'true'
+        shell: bash
+        run: |
+          pacific_date="$(TZ=America/Los_Angeles date '+%B %-d, %Y')"
+          sed -i "s|^> \*\*Dashboard health:\*\*.*$|> **Dashboard health:** ✅ Status as of ${pacific_date}|" README.md
+
+      - name: Commit daily heartbeat
+        if: steps.pacific_time.outputs.run == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: dashboard health $(TZ=America/Los_Angeles date +%F)"
+          git push
