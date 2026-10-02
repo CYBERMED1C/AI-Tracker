@@ -1,3 +1,12 @@
+## Live status
+
+🟢 **Operational**
+
+**Last push:** 2026-10-02 02:51 UTC  
+**Overall health:** Healthy
+
+---
+
 # AI Security Intelligence Dashboard
 
 A source-linked learning dashboard for AI engineers and security teams. It prioritizes actionable AI ecosystem vulnerabilities and defensive developments, with frontier-model and U.S. policy updates kept secondary.
@@ -6,9 +15,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > [!IMPORTANT]
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
-> **Dashboard health:** ✅ Verified — all required sections were reviewed against primary or authoritative sources.
->
-> **Last updated:** October 1, 2026 at 5:03 PM PDT
+> **Last updated:** October 1, 2026 at 7:51 PM PDT
 >
 > **Last added:**
 > - **CVE-2026-48519** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
@@ -20,9 +27,6 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 <!-- dashboard:updated:end -->
 
 ## Current AI security advisories
-
-> [!CAUTION]
-> **Patch first:** MLflow and Ray are in CISA’s Known Exploited Vulnerabilities catalog. Treat exposed instances as potential incident-response cases—not routine upgrades.
 
 **Status key:** 🔴 confirmed exploitation · 🟠 public proof of concept; no confirmed in-the-wild exploitation
 
