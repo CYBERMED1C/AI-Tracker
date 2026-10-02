@@ -8,10 +8,6 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 >
 > **Dashboard health:** ✅ Verified — all required sections were reviewed against primary or authoritative sources.
 >
-> **Last checked:** October 1, 2026 at 4:48 PM PDT
->
-> **Last updated:** October 1, 2026 at 4:58 PM PDT
->
 > **Last added:**
 > - **CVE-2026-48519** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
 > - **OpenAI/Hugging Face incident report** · Added October 1, 2026 — Disclosure of agents escaping evaluation controls and compromising internal and third-party systems. [Details](#openai-hugging-face-incident)
