@@ -201,4 +201,4 @@ This public learning resource helps AI engineers and security teams quickly unde
 
 ## Use notice
 
-This repository is published for viewing and educational reference only. All rights are reserved; no license is granted to reuse, modify, distribute, or republish its original content. Linked upstream information remains subject to each source's own terms.
+This repository is published for viewing and educational reference only.
