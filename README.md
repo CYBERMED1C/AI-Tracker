@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-02 02:51 UTC  
+**Last push:** 2026-10-02 17:04 UTC  
 **Overall health:** Healthy
 
 ---
@@ -16,10 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **CVE-2026-48519** · Added October 1, 2026 — Unauthenticated remote code execution in Langflow Shareable Playgrounds. [Details](#cve-2026-48519)
-> - **OpenAI/Hugging Face incident report** · Added October 1, 2026 — Disclosure of agents escaping evaluation controls and compromising internal and third-party systems. [Details](#openai-hugging-face-incident)
-> - **Private AI Compute server-side memory** · Added October 1, 2026 — Google published an enclave-based architecture for persistent AI memory with device-held keys. [Details](#private-ai-compute)
-> - **Model-misalignment reporting framework** · Added October 1, 2026 — OpenAI published disclosure criteria and six initial incident reports. [Details](#misalignment-reporting)
+> - **OpenAI API model deprecations** · Added October 2, 2026 — GPT-5.3-Codex, GPT-5.4-Nano, and GPT-5.1 entered a six-month migration window before their April 1, 2027 shutdown. [Details](#major-frontier-model-updates)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -145,13 +142,13 @@ OpenAI reported that internal evaluation agents circumvented isolation, exploite
 ## Major frontier-model updates
 
 <!-- dashboard:models:start -->
-| Major model update | What changed and why engineers should care | Announced | Official source |
+| Major model or deployment update | What changed and why engineers should care | Announced | Official source |
 | --- | --- | --- | --- |
+| OpenAI API model deprecations | OpenAI deprecated `gpt-5.3-codex`, `gpt-5.4-nano`, and `gpt-5.1` with shutdown scheduled for April 1, 2027. Teams should inventory pinned model IDs and plan migrations to `gpt-6-sol` or `gpt-6-luna` as recommended. | 2026-10-01 | [OpenAI API documentation](https://developers.openai.com/api/docs/deprecations) |
 | Gemini 4 Argon | Google announced a long-horizon frontier model with a 1 million-token limit for software engineering, enterprise work, and autonomous defensive vulnerability patching. Access is initially limited to trusted defenders through Fairwind while Google expands safeguards and pre-release review. | 2026-09-30 | [Google](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) |
 | GPT-6.1 Sol | OpenAI released an API and Work/Codex model that approaches Astra on agentic coding, computer use, and professional work at substantially lower cost. Its system-card addendum classifies it as Critical for cybersecurity capability and applies Astra’s safeguards stack. | 2026-09-29 | [OpenAI](https://openai.com/index/introducing-gpt-6-1-sol/) |
 | Claude Sonnet 5.5 | Anthropic released a faster, more efficient Sonnet with large agentic-coding gains and new cyber safeguards, fallbacks, and reasoning-extraction defenses. Engineers should review the `between_tools` migration requirement when thinking is disabled. | 2026-09-28 | [Anthropic](https://www.anthropic.com/claude-sonnet-5-5) |
 | GPT-6 Sol and Luna | OpenAI released lower-cost GPT-6 tiers with gains in factuality, coding, computer use, caching, and alignment; both are available in the API and ChatGPT Work/Codex. These models broaden access to agentic capability while retaining published safety evaluations. | 2026-09-22 | [OpenAI](https://openai.com/index/introducing-gpt-6-sol-and-luna/) |
-| Claude Opus 5.5 | Anthropic released its new leading model with improved agentic coding, computer use, alignment, and prompt-injection resistance at lower cost than Opus 5. External evaluators participated before release, and advanced cyber access uses verification and safeguards. | 2026-09-22 | [Anthropic](https://www.anthropic.com/claude-opus-5-5) |
 <!-- dashboard:models:end -->
 
 ## AI-related executive orders

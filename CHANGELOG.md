@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard. Routine checks, formatting changes, and automation maintenance are intentionally omitted.
 
+## October 2, 2026
+
+- Added **OpenAI API model deprecations** — `gpt-5.3-codex`, `gpt-5.4-nano`, and `gpt-5.1` are scheduled to shut down April 1, 2027, with official replacement guidance. [Details](README.md#major-frontier-model-updates)
+
 ## October 1, 2026
 
 - Added **CVE-2026-48519** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Details](README.md#cve-2026-48519)
