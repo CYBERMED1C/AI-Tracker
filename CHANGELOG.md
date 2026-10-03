@@ -1,6 +1,6 @@
 # Update History
 
-This page records intelligence additions and material corrections to the dashboard. Routine checks, formatting changes, and automation maintenance are intentionally omitted.
+This page records intelligence additions and material corrections to the dashboard.
 
 ## October 3, 2026
 
