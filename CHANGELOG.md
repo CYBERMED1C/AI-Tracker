@@ -2,6 +2,12 @@
 
 This page records intelligence additions and material corrections to the dashboard. Routine checks, formatting changes, and automation maintenance are intentionally omitted.
 
+## October 3, 2026
+
+- Added **EO 14434 — Inaugurating the Era of Super Intelligence** — directs federal executive agencies to use “Super Intelligence” and “SI” in non-statutory materials while preserving the existing statutory AI definition. [Details](README.md#ai-related-executive-orders)
+- Added **EO 14432 — Streamlining Access to Government Services Through America.gov** — establishes a unified federal digital-service entry point with security, privacy, authorization, and AI reliability requirements. [Details](README.md#ai-related-executive-orders)
+- Clarified **CVE-2026-64849 remediation** — MLflow 3.15.0 fixes the listed SSRF; 3.16.0 or later is the safer target because it includes follow-up IPv6-transition hardening. [Details](README.md#cve-2026-64849)
+
 ## October 2, 2026
 
 - Added **OpenAI API model deprecations** — `gpt-5.3-codex`, `gpt-5.4-nano`, and `gpt-5.1` are scheduled to shut down April 1, 2027, with official replacement guidance. [Details](README.md#major-frontier-model-updates)

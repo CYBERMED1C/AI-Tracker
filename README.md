@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-02 17:06 UTC  
+**Last push:** 2026-10-03 18:20 UTC  
 **Overall health:** Healthy
 
 ---
@@ -16,7 +16,8 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **OpenAI API model deprecations** · Added October 2, 2026 — GPT-5.3-Codex, GPT-5.4-Nano, and GPT-5.1 entered a six-month migration window before their April 1, 2027 shutdown. [Details](#major-frontier-model-updates)
+> - **EO 14434 — Inaugurating the Era of Super Intelligence** · Added October 3, 2026 — Directs executive agencies to use “Super Intelligence” and “SI” in non-statutory materials while retaining the existing statutory AI definition. [Details](#ai-related-executive-orders)
+> - **EO 14432 — Streamlining Access to Government Services Through America.gov** · Added October 3, 2026 — Establishes a unified federal digital-service entry point with security, privacy, authorization, and AI reliability requirements. [Details](#ai-related-executive-orders)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -49,7 +50,7 @@ Priorities reflect exploitation evidence and likely deployment impact—not CVSS
 An attacker who can reach the MLflow Tracking Server can use webhook redirects to read responses from internal, loopback, or cloud-metadata services.
 
 - **Exposed if:** MLflow 3.10.0–3.14.x is reachable by an untrusted user or network.
-- **Do now:** Upgrade to **3.16.0 or later**; restrict and authenticate the Tracking Server.
+- **Do now:** Upgrade to **3.16.0 or later**; version 3.15.0 fixes this CVE, while 3.16.0 adds follow-up IPv6-transition hardening. Restrict and authenticate the Tracking Server.
 - **Look for:** Unexpected webhook tests, access to metadata addresses, or requests to internal-only services.
 - **Why P0:** CISA added this CVE to KEV on **August 19, 2026**.
 - **Evidence:** [Maintainer advisory](https://github.com/mlflow/mlflow/security/advisories/GHSA-7gwp-5pfp-969j) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-64849)
@@ -158,9 +159,9 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 <!-- dashboard:orders:start -->
 | Executive order | Signed | Practical relevance | Official source |
 | --- | --- | --- | --- |
+| **EO 14434 — Inaugurating the Era of Super Intelligence** | 2026-09-29 | Directs executive agencies to use “Super Intelligence” and “SI” in non-statutory materials while retaining the existing statutory AI definition unless later changed. It does not alter prior regulations, presidential actions, contracts, grants, or historical documents. | [White House](https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/) |
+| **EO 14432 — Streamlining Access to Government Services Through America.gov** | 2026-09-29 | Directs GSA to establish America.gov as a unified federal-services entry point using Login.gov, with data minimization, secure authentication, auditable authorization, and accuracy, reliability, and transparency requirements for AI used by the service. | [White House](https://www.whitehouse.gov/presidential-actions/2026/09/streamlining-access-to-government-services-through-america.gov/) |
 | **EO 14409 — Promoting Advanced Artificial Intelligence Innovation and Security** | 2026-06-02 | Directs federal cyber-defense prioritization and a classified process for assessing advanced model cyber capabilities and designating covered frontier models, alongside voluntary secure pre-release access. | [White House](https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/) |
-| **EO 14365 — Ensuring a National Policy Framework for Artificial Intelligence** | 2025-12-11 | Directs federal review and litigation activity concerning conflicting state AI laws and calls for legislative recommendations for a national framework. This is a policy direction, not a substitute for legal advice about any specific state law. | [White House](https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/) |
-| **EO 14363 — Launching the Genesis Mission** | 2025-11-24 | Directs DOE to establish a secure, unified AI platform combining federal computing, scientific datasets, models, and automated experimentation, with cybersecurity, provenance, access-control, and supply-chain requirements. | [White House](https://www.whitehouse.gov/presidential-actions/2025/11/launching-the-genesis-mission/) |
 <!-- dashboard:orders:end -->
 
 ## Reference resources
