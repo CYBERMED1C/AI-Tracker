@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 4, 2026
+
+- Added **VoxCPM-themed PyPI cryptominer campaign** — GitHub-reviewed OpenSSF advisories identified ten malicious packages targeting the AI speech ecosystem; none has a patched version. [Details](README.md#voxcpm-typosquat-cryptominers)
+
 ## October 3, 2026
 
 - Added **EO 14434 — Inaugurating the Era of Super Intelligence** — directs federal executive agencies to use “Super Intelligence” and “SI” in non-statutory materials while preserving the existing statutory AI definition. [Details](README.md#ai-related-executive-orders)

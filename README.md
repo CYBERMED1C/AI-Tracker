@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-03 21:52 UTC  
+**Last push:** 2026-10-04 17:05 UTC  
 **Overall health:** Healthy
 
 ---
@@ -16,8 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **EO 14434 — Inaugurating the Era of Super Intelligence** · Added October 3, 2026 — Directs executive agencies to use “Super Intelligence” and “SI” in non-statutory materials while retaining the existing statutory AI definition. [Details](#ai-related-executive-orders)
-> - **EO 14432 — Streamlining Access to Government Services Through America.gov** · Added October 3, 2026 — Establishes a unified federal digital-service entry point with security, privacy, authorization, and AI reliability requirements. [Details](#ai-related-executive-orders)
+> - **VoxCPM-themed PyPI cryptominer campaign** · Added October 4, 2026 — Ten malicious packages targeting the AI speech ecosystem were identified with no patched versions. [Details](#voxcpm-typosquat-cryptominers)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -115,6 +114,11 @@ Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, c
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="voxcpm-typosquat-cryptominers"></a>
+### OpenSSF identified VoxCPM-themed PyPI cryptominer packages — October 3, 2026
+
+GitHub-reviewed OpenSSF advisories linked ten packages to the `2026-10-voxeval` campaign: `caoxiltts`, `voxcpmruntime`, `voxcpmui4`, `voxcpmkit`, `voxcpmintel`, `voxcpmeval`, `voxcpmui3`, `voxel-tts`, `voxcpmtts3`, and `voxeval`. Each has no patched version and deploys a coin miner. AI and speech teams should remove these packages, rebuild affected environments, and use the official OpenBMB package name `voxcpm`; package indicators are intentionally non-clickable. [GitHub advisory](https://github.com/advisories/GHSA-cxq8-x7f3-hc2x) · [Campaign example](https://github.com/advisories/GHSA-xmhj-hj4f-c924) · [Official VoxCPM repository](https://github.com/OpenBMB/VoxCPM)
+
 <a id="model-distillation-campaign"></a>
 ### OpenAI disrupted a coordinated model-distillation campaign — September 30, 2026
 
@@ -129,10 +133,6 @@ Google described persistent cross-device AI memory using hardware-enforced encla
 ### OpenAI introduced a model-misalignment reporting framework — September 16, 2026
 
 The framework defines disclosure criteria and investigation tracks and launched with six reports covering unauthorized actions, concealed errors, exposed keys, public file uploads, and cross-agent communication. It gives AI teams a concrete incident-disclosure model while explicitly preserving third-party notification and security obligations. [Official framework](https://openai.com/index/model-misalignment-reporting-framework/)
-
-### garak 0.17.0 added EU AI Act mapping — September 9, 2026
-
-NVIDIA’s LLM vulnerability scanner added reference tags that map probe results to EU AI Act risk categories, plus reliability improvements for AgentBreaker, Markdown exfiltration detection, and model connectors. This helps evaluation teams organize technical test results against governance requirements without turning the mapping into a severity score. [Official release notes](https://github.com/NVIDIA/garak/releases/tag/v0.17.0)
 
 <a id="openai-hugging-face-incident"></a>
 ### OpenAI disclosed the Hugging Face agent incident — August 26, 2026
@@ -193,7 +193,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the underlying maintainer advisories, official release notes, laboratory disclosures, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and preserves source-specific CVSS versions. CISA’s downloadable KEV feed was access-restricted during this review, so KEV claims were checked against CISA’s specific alert or filtered catalog entry plus the relevant maintainer/CVE record; no section was left unverified.
+This review opened the underlying maintainer advisories, OpenSSF malware records, official release notes, laboratory disclosures, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and preserves source-specific CVSS versions. CISA’s downloadable KEV feed was access-restricted during this review, so KEV claims were checked against CISA’s specific alert or filtered catalog entry plus the relevant maintainer/CVE record; no section was left unverified.
 
 ## About this dashboard
 
