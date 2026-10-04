@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-04 17:05 UTC  
+**Last push:** 2026-10-04 23:23 UTC  
 **Overall health:** Healthy
 
 ---
@@ -165,6 +165,16 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 <!-- dashboard:orders:end -->
 
 ## Reference resources
+
+### Quick tips for AI risk research
+
+| Resource | Best use | Quick tip |
+| --- | --- | --- |
+| [MIT AI Risk Repository](https://airisk.mit.edu/risks) | Threat modeling, risk scoping, and control-gap analysis | Filter by cause, lifecycle timing, domain, and subdomain to turn a broad AI concern into a testable scenario. Taxonomy placement is context—not proof of exploitation. |
+| [CVE Artificial Intelligence Working Group](https://www.cve.org/Media/News/item/news/2024/10/15/New-CVE-Artificial-Intelligence-Working-Group) | Understanding how the CVE Program is approaching AI vulnerabilities | Use its official guidance to decide whether an issue may be CVE-able. It is a policy source, not an operational advisory feed. |
+| [AI Vulnerability Database (AVID)](https://avidml.org/database/) | Finding documented AI failure modes, reports, and vulnerabilities | Start with AVID for discovery, then open the cited maintainer, vendor, CVE, or original evidence before acting or publishing. |
+| [AI Incident Database](https://incidentdatabase.ai/) | Learning from real-world AI harms and near harms | Hunt for recurring failure patterns, then verify the underlying reports and separate the incident date from the publication date. |
+| [arXiv](https://arxiv.org/) | Tracking emerging AI-security research | Treat papers as preprints unless confirmed otherwise. Look for released code, independent reproduction, and primary-source corroboration before elevating a claim. |
 
 ### Government, standards, and knowledge bases
 
