@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 6, 2026
+
+- Added **OpenAI text-provenance rollout** — OpenAI launched opt-in `textGrain` watermarking for select API models, announced an EU rollout for eligible ChatGPT and Codex output, and opened limited detector access while warning that detection remains probabilistic. [Details](README.md#openai-text-provenance)
+
 ## October 4, 2026
 
 - Added **VoxCPM-themed PyPI cryptominer campaign** — GitHub-reviewed OpenSSF advisories identified ten malicious packages targeting the AI speech ecosystem; none has a patched version. [Details](README.md#voxcpm-typosquat-cryptominers)
