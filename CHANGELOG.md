@@ -2,6 +2,11 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 8, 2026
+
+- Added **OpenAI’s AI-enabled false-front operations disclosure** — OpenAI banned Russia- and Iran-origin influence operations that combined model use with deceptive personas, forged materials, and content laundering through legitimate outlets. [Details](README.md#openai-false-front-operations)
+- Added **Anthropic’s expanded Cyber Verification Program** — qualifying defenders can apply for Defense, Red Team, or Specialized Access tiers with progressively reduced cyber blocking and tier-specific verification controls. [Details](README.md#anthropic-cyber-verification-program)
+
 ## October 7, 2026
 
 - Added **NVIDIA AICR v1.0** — version-locked GPU-cluster recipes, stable public interfaces, and signed validation evidence provide a reproducible way to configure and verify AI training and inference infrastructure. [Details](README.md#nvidia-aicr-v1)
