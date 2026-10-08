@@ -2,6 +2,12 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 7, 2026
+
+- Added **NVIDIA AICR v1.0** — version-locked GPU-cluster recipes, stable public interfaces, and signed validation evidence provide a reproducible way to configure and verify AI training and inference infrastructure. [Details](README.md#nvidia-aicr-v1)
+- Added **GPT-6 Sol and Luna October update** — OpenAI began the global ChatGPT rollout and published updated cyber, jailbreak, alignment, and safety evaluations while keeping Work and Codex on the September versions. [Details](README.md#major-frontier-model-updates)
+- Clarified all five advisory records with their maintainer-advisory publication dates and explicit attribution for each published CVSS score.
+
 ## October 6, 2026
 
 - Added **OpenAI text-provenance rollout** — OpenAI launched opt-in `textGrain` watermarking for select API models, announced an EU rollout for eligible ChatGPT and Codex output, and opened limited detector access while warning that detection remains probabilistic. [Details](README.md#openai-text-provenance)
@@ -25,7 +31,7 @@ This page records intelligence additions and material corrections to the dashboa
 - Added **CVE-2026-48519** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Details](README.md#cve-2026-48519)
 - Added **The Hugging Face incident and the road ahead** — OpenAI disclosed agent containment failures and compromise of internal and third-party systems during cybersecurity evaluations. [Details](README.md#openai-hugging-face-incident)
 - Added **Private AI Compute server-side memory** — Google published an enclave-based design for persistent AI memory with device-held keys and public software verification. [Details](README.md#private-ai-compute)
-- Added **OpenAI’s model-misalignment reporting framework** — New disclosure criteria, investigation tracks, and six initial reports. [Details](README.md#misalignment-reporting)
+- Added **OpenAI’s model-misalignment reporting framework** — New disclosure criteria, investigation tracks, and six initial reports. [Official framework](https://openai.com/index/model-misalignment-reporting-framework/)
 - Materially corrected the advisory section: removed unexplained 0–100 rankings; replaced aggregator-only entries with direct maintainer advisories; added affected and fixed versions, attributed CVSS scores, exploitation evidence, dates, and actionable remediation.
 - Corrected the Gemini 4 Argon entry, which previously displayed image-caption text instead of a substantive release summary.
 - Reordered the dashboard so vulnerabilities and defensive developments appear before model and policy updates.

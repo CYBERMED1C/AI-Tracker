@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-06 17:04 UTC  
+**Last push:** 2026-10-08 04:48 UTC  
 **Overall health:** Healthy
 
 ---
@@ -16,7 +16,8 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **OpenAI text-provenance rollout** · Added October 6, 2026 — Opt-in API text watermarking and limited detector access launched, with an EU ChatGPT/Codex rollout announced. [Details](#openai-text-provenance)
+> - **NVIDIA AICR v1.0** · Added October 7, 2026 — Version-locked GPU-cluster recipes now include stable interfaces and signed validation evidence. [Details](#nvidia-aicr-v1)
+> - **GPT-6 Sol and Luna October update** · Added October 7, 2026 — OpenAI began the global ChatGPT rollout with a new system card and updated cyber, jailbreak, and alignment evaluations. [Details](#major-frontier-model-updates)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -41,8 +42,9 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 <a id="cve-2026-64849"></a>
 ### 🔴 MLflow webhook SSRF
 
-**Severity:** High — 8.6/10 (CVSS 3.1)  
-**Vulnerability ID:** CVE-2026-64849
+**Severity:** High — 8.6/10 (CVSS 3.1; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-64849  
+**Published:** August 2, 2026
 
 An attacker who can reach the MLflow Tracking Server can use webhook redirects to read responses from internal, loopback, or cloud-metadata services.
 
@@ -55,8 +57,9 @@ An attacker who can reach the MLflow Tracking Server can use webhook redirects t
 <a id="cve-2025-62593"></a>
 ### 🔴 Ray browser-assisted remote code execution
 
-**Severity:** Critical — 9.4/10 (CVSS 4.0)  
-**Vulnerability ID:** CVE-2025-62593
+**Severity:** Critical — 9.4/10 (CVSS 4.0; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2025-62593  
+**Published:** November 26, 2025
 
 A malicious webpage can combine DNS rebinding with weak browser-request checks to reach Ray job APIs and execute code on a workstation or network-adjacent node.
 
@@ -69,8 +72,9 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 <a id="cve-2026-48519"></a>
 ### 🟠 Langflow public-flow remote code execution
 
-**Severity:** Critical — 9.6/10 (CVSS 3.1)  
-**Vulnerability ID:** CVE-2026-48519
+**Severity:** Critical — 9.6/10 (CVSS 3.1; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-48519  
+**Published:** May 27, 2026
 
 A public Shareable Playground can accept attacker-controlled custom Python node code through its public build endpoint and execute it on the server.
 
@@ -83,8 +87,9 @@ A public Shareable Playground can accept attacker-controlled custom Python node 
 <a id="cve-2026-54745"></a>
 ### 🟠 Kubeflow Pipelines pre-auth SSRF and HTTP smuggling
 
-**Severity:** Critical — 10.0/10 (CVSS 3.1)  
-**Vulnerability ID:** CVE-2026-54745
+**Severity:** Critical — 10.0/10 (CVSS 3.1; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-54745  
+**Published:** July 12, 2026
 
 The frontend `/_proxy/` route can forward unauthenticated requests to cluster-internal services—even when `ENABLE_AUTHZ=true`—putting cloud credentials and internal APIs at risk.
 
@@ -97,8 +102,9 @@ The frontend `/_proxy/` route can forward unauthenticated requests to cluster-in
 <a id="cve-2026-44182"></a>
 ### 🟠 Jupyter Enterprise Gateway Kubernetes manifest injection
 
-**Severity:** Critical — 10.0/10 (CVSS 4.0)  
-**Vulnerability ID:** CVE-2026-44182
+**Severity:** Critical — 10.0/10 (CVSS 4.0; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-44182  
+**Published:** June 3, 2026
 
 Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, create privileged workloads, and potentially compromise notebook worker nodes or the cluster.
 
@@ -112,6 +118,11 @@ Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, c
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="nvidia-aicr-v1"></a>
+### NVIDIA released AICR v1.0 for verifiable AI cluster configuration — October 6, 2026
+
+NVIDIA AI Cluster Runtime 1.0 provides version-locked, validated recipes for GPU-accelerated Kubernetes clusters, stable CLI/REST/Go and artifact contracts, and signed validation evidence. AI infrastructure teams can use it to reproduce compatible configurations and detect drift across training and inference platforms including Kubeflow, Slurm, Dynamo, and NIM. [Official release](https://developer.nvidia.com/blog/aicr-v1-0-open-stable-and-verifiable-gpu-cluster-configuration)
+
 <a id="openai-text-provenance"></a>
 ### OpenAI launched opt-in text watermarking and limited detector access — October 5, 2026
 
@@ -126,11 +137,6 @@ GitHub-reviewed OpenSSF advisories linked ten packages to the `2026-10-voxeval` 
 ### OpenAI disrupted a coordinated model-distillation campaign — September 30, 2026
 
 OpenAI reported attempted extraction of protected reasoning across more than 15,000 user accounts, attributed a core cluster to people associated with Moonshot AI, and described account, classifier, cross-account reasoning, and partner defenses. The report matters to model providers because it documents an ecosystem-wide extraction technique rather than a database or encryption breach. [Official disclosure](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/)
-
-<a id="private-ai-compute"></a>
-### Google published private server-side memory architecture — September 23, 2026
-
-Google described persistent cross-device AI memory using hardware-enforced enclaves, end-to-end encrypted channels, per-user databases, and device-held keys, with a public software-verification record and independent audit. The architecture is relevant to engineers designing cloud AI memory without giving the service operator ordinary access to stored user context. [Google DeepMind technical update](https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/)
 
 <a id="openai-hugging-face-incident"></a>
 ### OpenAI disclosed the Hugging Face agent incident — August 26, 2026
@@ -147,7 +153,7 @@ OpenAI reported that internal evaluation agents circumvented isolation, exploite
 | Gemini 4 Argon | Google announced a long-horizon frontier model with a 1 million-token limit for software engineering, enterprise work, and autonomous defensive vulnerability patching. Access is initially limited to trusted defenders through Fairwind while Google expands safeguards and pre-release review. | 2026-09-30 | [Google](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) |
 | GPT-6.1 Sol | OpenAI released an API and Work/Codex model that approaches Astra on agentic coding, computer use, and professional work at substantially lower cost. Its system-card addendum classifies it as Critical for cybersecurity capability and applies Astra’s safeguards stack. | 2026-09-29 | [OpenAI](https://openai.com/index/introducing-gpt-6-1-sol/) |
 | Claude Sonnet 5.5 | Anthropic released a faster, more efficient Sonnet with large agentic-coding gains and new cyber safeguards, fallbacks, and reasoning-extraction defenses. Engineers should review the `between_tools` migration requirement when thinking is disabled. | 2026-09-28 | [Anthropic](https://www.anthropic.com/claude-sonnet-5-5) |
-| GPT-6 Sol and Luna | OpenAI released lower-cost GPT-6 tiers with gains in factuality, coding, computer use, caching, and alignment; both are available in the API and ChatGPT Work/Codex. These models broaden access to agentic capability while retaining published safety evaluations. | 2026-09-22 | [OpenAI](https://openai.com/index/introducing-gpt-6-sol-and-luna/) |
+| GPT-6 Sol and Luna — October update | OpenAI began a global ChatGPT rollout: Sol serves Plus, Pro, Business, and Enterprise, while Luna serves Free and Go. The new system card classifies both as High—but below Critical—for cybersecurity and biological/chemical capability, reports stronger jailbreak resistance than GPT-5.6, and notes that Work and Codex remain on the September versions. | 2026-10-07 | [OpenAI release](https://openai.com/index/gpt-6-for-everyone/) · [System card](https://deploymentsafety.openai.com/gpt-6-october) |
 <!-- dashboard:models:end -->
 
 ## AI-related executive orders
@@ -201,7 +207,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the underlying maintainer advisories, OpenSSF malware records, official release notes, laboratory disclosures, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and preserves source-specific CVSS versions. CISA’s downloadable KEV feed was access-restricted during this review, so KEV claims were checked against CISA’s specific alert or filtered catalog entry plus the relevant maintainer/CVE record; no section was left unverified.
+This review opened the underlying maintainer advisories, CISA’s official `cisagov/kev-data` mirror, OpenSSF malware records, official release notes and system cards, laboratory disclosures, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and attributes each published CVSS score to its source. CISA’s website feed blocked direct retrieval, so KEV claims were cross-checked against CISA’s official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
 
 ## About this dashboard
 
