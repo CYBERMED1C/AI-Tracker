@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-08 17:03 UTC  
+**Last push:** 2026-10-09 17:02 UTC  
 **Overall health:** Healthy
 
 ---
@@ -16,8 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **OpenAI disrupted AI-enabled false-front influence operations** · Added October 8, 2026 — OpenAI banned Russia- and Iran-origin operations that combined model use with deceptive media and organizational fronts. [Details](#openai-false-front-operations)
-> - **Anthropic expanded the Cyber Verification Program** · Added October 8, 2026 — Verified defenders can apply for tiered access to advanced cyber capabilities with controls matched to defensive, red-team, or specialized work. [Details](#anthropic-cyber-verification-program)
+> - **Q3 GenAI and agentic-AI exploit roundup** · Added October 9, 2026 — A project-editor roundup maps disclosed agent incidents and supply-chain campaigns to OWASP’s 2026 LLM and agentic-risk categories, with concrete defensive actions. [Details](#owasp-q3-2026-exploit-roundup)
 >>
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -118,6 +117,11 @@ Attacker-controlled `KERNEL_*` values can alter rendered Kubernetes manifests, c
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="owasp-q3-2026-exploit-roundup"></a>
+### OWASP GenAI project published a Q3 exploit roundup — October 8, 2026
+
+An OWASP GenAI Security Project editor consolidated disclosed agent-containment failures, prompt and memory attacks, AI-tool supply-chain compromises, and a malicious MCP campaign into defensive guidance mapped to the 2026 LLM and agentic-risk categories. Teams can use the roundup to test egress controls, per-run credentials, target allowlists, package-publishing restrictions, and MCP-definition change controls; the page explicitly labels its mappings and recommendations as analyst assessments rather than new exploitation evidence. [Project roundup](https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/)
+
 <a id="openai-false-front-operations"></a>
 ### OpenAI disrupted AI-enabled false-front influence operations — October 8, 2026
 
@@ -127,11 +131,6 @@ OpenAI banned two influence operations—one originating in Russia and one in Ir
 ### Anthropic expanded trusted access for defensive cyber work — October 6, 2026
 
 Anthropic consolidated Project Glasswing and its Cyber Verification Program into Defense, Red Team, and Specialized Access tiers, giving verified defenders progressively fewer cyber blocks while retaining stricter controls for high-risk systems. Security teams should review eligibility, authorization boundaries, and data-retention requirements before using the program for vulnerability validation or red teaming. [Official announcement](https://www.anthropic.com/news/cyber-verification-program)
-
-<a id="nvidia-aicr-v1"></a>
-### NVIDIA released AICR v1.0 for verifiable AI cluster configuration — October 6, 2026
-
-NVIDIA AI Cluster Runtime 1.0 provides version-locked, validated recipes for GPU-accelerated Kubernetes clusters, stable CLI/REST/Go and artifact contracts, and signed validation evidence. AI infrastructure teams can use it to reproduce compatible configurations and detect drift across training and inference platforms including Kubeflow, Slurm, Dynamo, and NIM. [Official release](https://developer.nvidia.com/blog/aicr-v1-0-open-stable-and-verifiable-gpu-cluster-configuration)
 
 <a id="openai-text-provenance"></a>
 ### OpenAI launched opt-in text watermarking and limited detector access — October 5, 2026
@@ -207,7 +206,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the underlying maintainer advisories, CISA’s official `cisagov/kev-data` mirror, OpenSSF malware records, official release notes and system cards, vendor security disclosures, laboratory announcements, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and attributes each published CVSS score to its source. CISA’s website feed blocked direct retrieval, so KEV claims were cross-checked against CISA’s official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
+This review opened the underlying maintainer advisories, CISA’s official `cisagov/kev-data` mirror, OpenSSF malware records, official release notes and system cards, laboratory and provider disclosures, the OWASP GenAI project’s Q3 roundup, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and attributes each published CVSS score to its source. CISA’s website feed blocked direct retrieval, so KEV claims were cross-checked against CISA’s official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
 
 ## About this dashboard
 

@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 9, 2026
+
+- Added **Q3 GenAI and agentic-AI exploit roundup** — the OWASP GenAI Security Project’s editor mapped disclosed agent incidents and supply-chain campaigns to 2026 LLM and agentic-risk categories and published concrete control-validation actions. [Details](README.md#owasp-q3-2026-exploit-roundup)
+
 ## October 8, 2026
 
 - Added **OpenAI’s AI-enabled false-front operations disclosure** — OpenAI banned Russia- and Iran-origin influence operations that combined model use with deceptive personas, forged materials, and content laundering through legitimate outlets. [Details](README.md#openai-false-front-operations)
