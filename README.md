@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-10 17:07 UTC  
+**Last push:** 2026-10-11 17:04 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,17 +16,14 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **Astron Agent cross-tenant RCE** · Added October 10, 2026 — CVE-2026-108263 lets a low-privilege tenant execute code as root and cross tenant boundaries on affected self-hosted deployments. [Details](#cve-2026-108263)
-> - **Anthropic unintended model-action report** · Added October 10, 2026 — Anthropic disclosed low-impact cases of models exploiting software, submitting a real form, bypassing gated data, and evading fetch limits. [Details](#anthropic-unintended-model-actions)
-> - **Anthropic Cyber Mission** · Added October 10, 2026 — Anthropic launched a critical-infrastructure defense program and free recurring security scans for participating open-source projects. [Details](#anthropic-cyber-mission)
-> - **Claude Haiku 5.5** · Added October 10, 2026 — Anthropic released a faster, lower-cost small model with updated safeguards and adjustable effort. [Details](#major-frontier-model-updates)
->>
+> - **cc-connect MAX webhook authentication bypass** · Added October 11, 2026 — CVE-2026-108549 can let an unauthenticated remote attacker impersonate an allowed or admin user and invoke host commands when the MAX webhook is exposed without a secret. [Details](#cve-2026-108549)
+>
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
 
 ## Current AI security advisories
 
-**Status key:** 🔴 confirmed exploitation · 🟠 public proof of concept; no confirmed in-the-wild exploitation
+**Status key:** 🔴 confirmed exploitation · 🟠 public technical details; no confirmed in-the-wild exploitation
 
 <!-- dashboard:advisories:start -->
 ### Triage view
@@ -35,7 +32,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 | --- | --- | --- | --- |
 | [MLflow: webhook SSRF](#cve-2026-64849) | 🔴 CISA KEV | 3.10.0–3.14.x → **3.16.0+** | Patch; restrict Tracking Server; investigate unexpected webhook activity |
 | [Ray: browser-assisted RCE](#cve-2025-62593) | 🔴 CISA KEV | <2.52.0 → **2.52.0+** | Patch; enable token auth; investigate unauthorized jobs |
-| [Langflow: public-flow RCE](#cve-2026-48519) | 🟠 Public PoC | ≤1.9.1 → **1.9.2+** | Patch; disable or restrict public sharing |
+| [cc-connect: MAX webhook auth bypass](#cve-2026-108549) | 🟠 Public details | ≤1.5.0 with exposed MAX webhook and no secret → **No fixed release established** | Configure a webhook secret; restrict or disable the listener |
 | [Kubeflow Pipelines: pre-auth SSRF](#cve-2026-54745) | 🟠 Public PoC | Frontend ≤2.16.0 → **2.17.0+** | Patch; block untrusted frontend access and sensitive egress |
 | [Astron Agent: cross-tenant RCE](#cve-2026-108263) | 🟠 Public PoC | ≤1.1.1 with local executor → **1.1.2+** | Patch the full stack; rotate defaults and shared credentials |
 
@@ -71,20 +68,21 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 - **Exploitation:** CISA added this CVE to KEV on **August 17, 2026**, confirming in-the-wild exploitation.
 - **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA alert](https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog)
 
-<a id="cve-2026-48519"></a>
-### 🟠 Langflow public-flow remote code execution
+<a id="cve-2026-108549"></a>
+### 🟠 cc-connect MAX webhook authentication bypass to host command execution
 
-**Severity:** Critical — 9.6/10 (CVSS 3.1; source: maintainer advisory)  
-**Vulnerability ID:** CVE-2026-48519  
-**Published:** May 27, 2026
+**Severity:** Critical — 9.2/10 (CVSS 4.0; source: GitHub Advisory Database, unreviewed)  
+**Vulnerability ID:** CVE-2026-108549  
+**Published:** October 10, 2026
 
-A public Shareable Playground can accept attacker-controlled custom Python node code through its public build endpoint and execute it on the server.
+cc-connect bridges local AI coding agents—including Claude Code, Cursor, Gemini CLI, and Codex—to messaging platforms. In affected MAX webhook deployments, an attacker who can reach the listener can forge an allowed or admin sender identity and invoke privileged commands such as `/shell` on the host.
 
-- **Exposed if:** Public-flow sharing is enabled on Langflow 1.9.1 or earlier.
-- **Do now:** Upgrade to **1.9.2 or later**; disable or restrict public sharing until patched.
-- **Look for:** Unexpected public build requests or unfamiliar custom node code.
-- **Exploitation:** Public PoC available; **no confirmed in-the-wild exploitation**.
-- **Evidence:** [Maintainer advisory](https://github.com/langflow-ai/langflow/security/advisories/GHSA-v5ff-9q35-q26f)
+- **Exposed if:** cc-connect 1.5.0 or earlier uses MAX webhook mode, the listener is reachable, and `webhook_secret` is empty.
+- **Do now:** Configure a strong `webhook_secret`; block untrusted access to the listener or disable MAX webhook mode until an upstream fixed release is established. The proposed fix remains unmerged, so do not treat prerelease version numbers alone as remediation.
+- **Fixed version:** **Not established.**
+- **Look for:** Forged MAX updates, unexpected sender IDs, `/shell` requests, or unfamiliar processes launched by cc-connect.
+- **Exploitation:** Public technical details and a proposed patch are available; **in-the-wild exploitation status is not established**.
+- **Evidence:** [GitHub advisory](https://github.com/advisories/GHSA-h8j8-r6g6-37hc) · [Upstream issue](https://github.com/chenhg5/cc-connect/issues/1968) · [Proposed fix](https://github.com/chenhg5/cc-connect/pull/1969)
 
 <a id="cve-2026-54745"></a>
 ### 🟠 Kubeflow Pipelines pre-auth SSRF and HTTP smuggling

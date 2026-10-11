@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 11, 2026
+
+- Added **CVE-2026-108549 — cc-connect MAX webhook authentication bypass** — exposed MAX webhook deployments without a secret can let unauthenticated attackers impersonate allowed or admin users and invoke host commands; no fixed release is established. [Details](README.md#cve-2026-108549)
+
 ## October 10, 2026
 
 - Added **CVE-2026-108263 — Astron Agent cross-tenant RCE** — authenticated low-privilege tenants can execute code as root and bypass tenant isolation on affected self-hosted deployments; upgrade the complete stack to 1.1.2 or later. [Details](README.md#cve-2026-108263)
@@ -44,7 +48,7 @@ This page records intelligence additions and material corrections to the dashboa
 
 ## October 1, 2026
 
-- Added **CVE-2026-48519** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Details](README.md#cve-2026-48519)
+- Added **CVE-2026-48519** — Langflow Shareable Playgrounds can permit unauthenticated server-side code execution; fixed in 1.9.2. [Maintainer advisory](https://github.com/langflow-ai/langflow/security/advisories/GHSA-v5ff-9q35-q26f)
 - Added **The Hugging Face incident and the road ahead** — OpenAI disclosed agent containment failures and compromise of internal and third-party systems during cybersecurity evaluations. [Official disclosure](https://openai.com/index/hugging-face-incident-and-the-road-ahead/)
 - Added **Private AI Compute server-side memory** — Google published an enclave-based design for persistent AI memory with device-held keys and public software verification. [Official architecture update](https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/)
 - Added **OpenAI’s model-misalignment reporting framework** — New disclosure criteria, investigation tracks, and six initial reports. [Official framework](https://openai.com/index/model-misalignment-reporting-framework/)
