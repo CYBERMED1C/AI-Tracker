@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-11 17:04 UTC
+**Last push:** 2026-10-12 17:04 UTC
 **Overall health:** Healthy
 
 ---
@@ -66,7 +66,7 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 - **Do now:** Upgrade to **2.52.0 or later**, enable token authentication, and isolate dashboard/job APIs.
 - **Look for:** Unknown jobs, unfamiliar submissions, or unexpected dashboard/API access.
 - **Exploitation:** CISA added this CVE to KEV on **August 17, 2026**, confirming in-the-wild exploitation.
-- **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA alert](https://www.cisa.gov/news-events/alerts/2026/08/17/cisa-adds-one-known-exploited-vulnerability-catalog)
+- **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-62593)
 
 <a id="cve-2026-108549"></a>
 ### 🟠 cc-connect MAX webhook authentication bypass to host command execution
