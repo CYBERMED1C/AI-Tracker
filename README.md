@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-12 17:04 UTC
+**Last push:** 2026-10-13 17:09 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,14 +16,16 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **cc-connect MAX webhook authentication bypass** · Added October 11, 2026 — CVE-2026-108549 can let an unauthenticated remote attacker impersonate an allowed or admin user and invoke host commands when the MAX webhook is exposed without a secret. [Details](#cve-2026-108549)
+> - **IBM Maximo AI Service remote code execution** · Added October 13, 2026 — CVE-2026-90920 allows remote code execution in affected AI Service releases; IBM directs operators to upgrade to 9.1.19, 9.2.3, or later. [Details](#cve-2026-90920)
+> - **Autonomous model-replication evaluation** · Added October 13, 2026 — Anthropic's Frontier Red Team demonstrated end-to-end replication in a simplified lab environment and separately showed small models establishing inference across heterogeneous hardware. [Details](#anthropic-self-replication)
+> - **Anti-distillation defenses** · Added October 13, 2026 — Anthropic reported new reasoning-access controls, classifiers, and enforcement that reduced measured reasoning extraction while introducing integration and false-positive tradeoffs. [Details](#anthropic-distillation-defenses)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
 
 ## Current AI security advisories
 
-**Status key:** 🔴 confirmed exploitation · 🟠 public technical details; no confirmed in-the-wild exploitation
+**Status key:** 🔴 confirmed exploitation · 🟠 public technical details · 🟡 official disclosure; exploitation not established
 
 <!-- dashboard:advisories:start -->
 ### Triage view
@@ -32,9 +34,9 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 | --- | --- | --- | --- |
 | [MLflow: webhook SSRF](#cve-2026-64849) | 🔴 CISA KEV | 3.10.0–3.14.x → **3.16.0+** | Patch; restrict Tracking Server; investigate unexpected webhook activity |
 | [Ray: browser-assisted RCE](#cve-2025-62593) | 🔴 CISA KEV | <2.52.0 → **2.52.0+** | Patch; enable token auth; investigate unauthorized jobs |
+| [IBM Maximo AI Service: remote code execution](#cve-2026-90920) | 🟡 Not established | 9.1.0 or 9.2.0 → **9.1.19+ or 9.2.3+** | Upgrade now; restrict access; investigate unexpected code execution |
 | [cc-connect: MAX webhook auth bypass](#cve-2026-108549) | 🟠 Public details | ≤1.5.0 with exposed MAX webhook and no secret → **No fixed release established** | Configure a webhook secret; restrict or disable the listener |
 | [Kubeflow Pipelines: pre-auth SSRF](#cve-2026-54745) | 🟠 Public PoC | Frontend ≤2.16.0 → **2.17.0+** | Patch; block untrusted frontend access and sensitive egress |
-| [Astron Agent: cross-tenant RCE](#cve-2026-108263) | 🟠 Public PoC | ≤1.1.1 with local executor → **1.1.2+** | Patch the full stack; rotate defaults and shared credentials |
 
 ---
 
@@ -68,6 +70,21 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 - **Exploitation:** CISA added this CVE to KEV on **August 17, 2026**, confirming in-the-wild exploitation.
 - **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-62593)
 
+<a id="cve-2026-90920"></a>
+### 🟡 IBM Maximo AI Service remote code execution
+
+**Severity:** Critical — 9.8/10 (CVSS 3.1; source: IBM CNA record)  
+**Vulnerability ID:** CVE-2026-90920  
+**CVE record published:** October 12, 2026
+
+IBM reports that affected Maximo AI Service releases can let a remote, unauthenticated attacker execute arbitrary code because generated code is not properly controlled. The vendor-assigned vector is network-accessible, low-complexity, requires no privileges, and needs no user interaction.
+
+- **Exposed if:** IBM Maximo AI Service 9.1.0 or 9.2.0 is deployed.
+- **Do now:** Upgrade 9.1 deployments to **9.1.19 or later** and 9.2 deployments to **9.2.3 or later**; restrict service access until upgraded and investigate unexpected child processes, code execution, or configuration changes.
+- **Look for:** Unfamiliar processes launched by the service, anomalous code-generation requests, unexpected outbound connections, or changes to service files and configuration.
+- **Exploitation:** CISA's ADP enrichment marked exploitation **none** on October 13, 2026; in-the-wild exploitation and a public exploit are **not established**.
+- **Evidence:** [IBM security bulletin](https://www.ibm.com/support/pages/node/7290833) · [Official CVE record](https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/90xxx/CVE-2026-90920.json)
+
 <a id="cve-2026-108549"></a>
 ### 🟠 cc-connect MAX webhook authentication bypass to host command execution
 
@@ -99,25 +116,21 @@ The frontend `/_proxy/` route can forward unauthenticated requests to cluster-in
 - **Exploitation:** Public PoC available; **no confirmed in-the-wild exploitation**.
 - **Evidence:** [Maintainer advisory](https://github.com/kubeflow/pipelines/security/advisories/GHSA-gqww-5pj5-8fq7)
 
-<a id="cve-2026-108263"></a>
-### 🟠 Astron Agent cross-tenant remote code execution
-
-**Severity:** Critical — 9.9/10 (CVSS 3.1; source: maintainer advisory)  
-**Vulnerability ID:** CVE-2026-108263  
-**Advisory published:** September 7, 2026 · **CVE record published:** October 9, 2026
-
-Astron Agent's legacy local workflow executor runs tenant-supplied code with full Python builtins as root in the `core-workflow` container. An authenticated low-privilege tenant can use shared service and database credentials to read or modify other tenants' data; the same sink is unauthenticated from the internal network.
-
-- **Exposed if:** Astron Agent 1.1.1 or earlier uses the shipped `CODE_EXEC_TYPE=local` path. Multi-tenant deployments face cross-tenant compromise; single-tenant deployments still face code-execution and credential-exposure risk.
-- **Do now:** Upgrade the complete stack to **1.1.2 or later**, including all service images and deployment configuration. Do not retain the unsupported local executor; rotate shipped defaults and any shared credentials.
-- **Look for:** Unexpected `/console-api/workflow/code/run` activity, direct database access from workflow containers, cross-tenant data changes, or unfamiliar processes running as root.
-- **Exploitation:** Public reproduction details are available; **no confirmed in-the-wild exploitation**.
-- **Evidence:** [Maintainer advisory](https://github.com/iflytek/astron-agent/security/advisories/GHSA-mh3w-4q3f-2fg5) · [Security release](https://github.com/iflytek/astron-agent/releases/tag/v1.1.2)
 <!-- dashboard:advisories:end -->
 
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="anthropic-self-replication"></a>
+### Anthropic evaluated autonomous model replication across heterogeneous devices — October 12, 2026
+
+Anthropic's Frontier Red Team reported that GLM-5.2 completed a simplified end-to-end replication task across eight nodes in four of five trials, while a 9B model separately established inference on eight of nine tested hardware types. This is a controlled evaluation—not evidence of a real-world AI worm—but it gives defenders concrete reasons to isolate inference credentials, restrict lateral paths, harden edge devices, and monitor unauthorized model deployment. [Official research](https://www.anthropic.com/research/self-replicating-ai)
+
+<a id="anthropic-distillation-defenses"></a>
+### Anthropic deployed stronger defenses against model distillation — October 12, 2026
+
+Anthropic reported that organization-bound reasoning access, preserved-thinking controls, two-stage extraction classifiers, and account enforcement reduced measured reasoning-token extraction by roughly 10–100×; it also disclosed integration changes, blocked-request charges, and a reported classifier false-positive rate below 0.1%. Model providers and inference platforms should treat repeated reasoning extraction, cross-account context movement, and proxy-account networks as abuse signals while independently validating provider-reported effectiveness. [Official research](https://www.anthropic.com/research/distillation-defenses)
+
 <a id="anthropic-unintended-model-actions"></a>
 ### Anthropic disclosed unintended model actions in evaluations and internal use — October 9, 2026
 
@@ -132,16 +145,6 @@ Anthropic launched the Critical Infrastructure Defense Program with operational-
 ### OWASP GenAI project published a Q3 exploit roundup — October 8, 2026
 
 An OWASP GenAI Security Project editor consolidated disclosed agent-containment failures, prompt and memory attacks, AI-tool supply-chain compromises, and a malicious MCP campaign into defensive guidance mapped to the 2026 LLM and agentic-risk categories. Teams can use the roundup to test egress controls, per-run credentials, target allowlists, package-publishing restrictions, and MCP-definition change controls; the page explicitly labels its mappings and recommendations as analyst assessments rather than new exploitation evidence. [Project roundup](https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/)
-
-<a id="openai-false-front-operations"></a>
-### OpenAI disrupted AI-enabled false-front influence operations — October 8, 2026
-
-OpenAI banned two influence operations—one originating in Russia and one in Iran—that used its models alongside conventional tactics to support deceptive front organizations and personas. The disclosure shows how AI can improve the scale, fluency, and internal workflows of influence campaigns without replacing the human infrastructure behind them; defenders should monitor for coordinated synthetic personas, forged materials, and content laundering through legitimate outlets. [Official disclosure](https://openai.com/index/disrupting-ai-enabled-false-front-operations/)
-
-<a id="anthropic-cyber-verification-program"></a>
-### Anthropic expanded trusted access for defensive cyber work — October 6, 2026
-
-Anthropic consolidated Project Glasswing and its Cyber Verification Program into Defense, Red Team, and Specialized Access tiers, giving verified defenders progressively fewer cyber blocks while retaining stricter controls for high-risk systems. Security teams should review eligibility, authorization boundaries, and data-retention requirements before using the program for vulnerability validation or red teaming. [Official announcement](https://www.anthropic.com/news/cyber-verification-program)
 
 <!-- dashboard:news:end -->
 
@@ -208,7 +211,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the underlying maintainer advisories, CISA’s official `cisagov/kev-data` mirror, official release notes and system cards, laboratory and provider disclosures, Anthropic’s model-action and defensive-program announcements, the OWASP GenAI project’s Q3 roundup, and White House orders. It distinguishes confirmed exploitation from public proof-of-concept material and attributes each published CVSS score to its source. CISA’s website feed blocked direct retrieval, so KEV claims were cross-checked against CISA’s official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
+This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, Anthropic's autonomous-replication and anti-distillation research, the OWASP GenAI project’s Q3 roundup, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
 
 ## About this dashboard
 

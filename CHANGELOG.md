@@ -2,6 +2,12 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 13, 2026
+
+- Added **CVE-2026-90920 — IBM Maximo AI Service remote code execution** — affected 9.1.0 and 9.2.0 deployments can permit unauthenticated remote code execution; IBM directs operators to upgrade to 9.1.19, 9.2.3, or later. [Details](README.md#cve-2026-90920)
+- Added **Anthropic's autonomous model-replication evaluation** — a controlled lab study found that GLM-5.2 completed a simplified end-to-end replication task and that smaller models could establish inference across heterogeneous hardware; this is not evidence of a real-world AI worm. [Details](README.md#anthropic-self-replication)
+- Added **Anthropic's anti-distillation defenses** — organization-bound reasoning access, classifiers, and account enforcement reportedly reduced measured reasoning extraction by roughly 10–100×, with disclosed integration and false-positive tradeoffs. [Details](README.md#anthropic-distillation-defenses)
+
 ## October 11, 2026
 
 - Added **CVE-2026-108549 — cc-connect MAX webhook authentication bypass** — exposed MAX webhook deployments without a secret can let unauthenticated attackers impersonate allowed or admin users and invoke host commands; no fixed release is established. [Details](README.md#cve-2026-108549)
