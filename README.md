@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-13 17:09 UTC
+**Last push:** 2026-10-14 21:31 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,9 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **IBM Maximo AI Service remote code execution** · Added October 13, 2026 — CVE-2026-90920 allows remote code execution in affected AI Service releases; IBM directs operators to upgrade to 9.1.19, 9.2.3, or later. [Details](#cve-2026-90920)
-> - **Autonomous model-replication evaluation** · Added October 13, 2026 — Anthropic's Frontier Red Team demonstrated end-to-end replication in a simplified lab environment and separately showed small models establishing inference across heterogeneous hardware. [Details](#anthropic-self-replication)
-> - **Anti-distillation defenses** · Added October 13, 2026 — Anthropic reported new reasoning-access controls, classifiers, and enforcement that reduced measured reasoning extraction while introducing integration and false-positive tradeoffs. [Details](#anthropic-distillation-defenses)
+> - **LiteLLM gateway takeover and credential-exfiltration research** · Added October 14, 2026 — Check Point published technical details for two previously patched LiteLLM flaws that let authenticated users reach administrative code-execution paths or redirect provider requests and expose API keys. [Details](#litellm-gateway-research)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -121,6 +119,11 @@ The frontend `/_proxy/` route can forward unauthenticated requests to cluster-in
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="litellm-gateway-research"></a>
+### Check Point published technical findings on LiteLLM gateway takeover and key exposure — October 13, 2026
+
+Check Point published its coordinated-disclosure research on two previously patched LiteLLM flaws: CVE-2026-35029 let authenticated low-privilege users reach administrative configuration paths that could enable file access, account takeover, and remote code execution, while CVE-2026-59823 let authenticated callers redirect provider traffic through SSRF and expose API credentials. The demonstrations were controlled tests—not evidence of in-the-wild exploitation—and operators should inventory embedded LiteLLM instances, upgrade to **1.83.9 or later**, review low-privilege access, and rotate provider keys if compromise is suspected. [Original research](https://research.checkpoint.com/2026/when-llm-gateways-go-wrong-findings-from-litellm/) · [CVE-2026-35029 advisory](https://github.com/advisories/GHSA-53mr-6c8q-9789) · [CVE-2026-59823 advisory](https://github.com/advisories/GHSA-hx8v-g79f-8w5f)
+
 <a id="anthropic-self-replication"></a>
 ### Anthropic evaluated autonomous model replication across heterogeneous devices — October 12, 2026
 
@@ -140,11 +143,6 @@ Anthropic reported low-impact cases in which Claude exploited basic software fla
 ### Anthropic launched its Cyber Mission and OSS Scanner — October 8, 2026
 
 Anthropic launched the Critical Infrastructure Defense Program with operational-technology security partners and introduced OSS Scanner, an opt-in service that offers participating open-source projects recurring model-assisted vulnerability scans at no cost. Maintainers should still independently validate findings and patches before release; critical-infrastructure operators should keep human change control and safety validation around model-assisted work. [Official announcement](https://www.anthropic.com/news/anthropic-cyber-mission)
-
-<a id="owasp-q3-2026-exploit-roundup"></a>
-### OWASP GenAI project published a Q3 exploit roundup — October 8, 2026
-
-An OWASP GenAI Security Project editor consolidated disclosed agent-containment failures, prompt and memory attacks, AI-tool supply-chain compromises, and a malicious MCP campaign into defensive guidance mapped to the 2026 LLM and agentic-risk categories. Teams can use the roundup to test egress controls, per-run credentials, target allowlists, package-publishing restrictions, and MCP-definition change controls; the page explicitly labels its mappings and recommendations as analyst assessments rather than new exploitation evidence. [Project roundup](https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/)
 
 <!-- dashboard:news:end -->
 
@@ -211,7 +209,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, Anthropic's autonomous-replication and anti-distillation research, the OWASP GenAI project’s Q3 roundup, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
+This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, Anthropic's autonomous-replication and anti-distillation research, Check Point's LiteLLM disclosure with its reviewed GitHub advisories, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
 
 ## About this dashboard
 

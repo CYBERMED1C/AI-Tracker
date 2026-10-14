@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 14, 2026
+
+- Added **LiteLLM gateway takeover and provider-key exposure research** — Check Point published technical details for CVE-2026-35029 and CVE-2026-59823, two previously patched authenticated attack paths affecting the LiteLLM AI gateway; operators should upgrade to 1.83.9 or later and review access and provider credentials. [Details](README.md#litellm-gateway-research)
+
 ## October 13, 2026
 
 - Added **CVE-2026-90920 — IBM Maximo AI Service remote code execution** — affected 9.1.0 and 9.2.0 deployments can permit unauthenticated remote code execution; IBM directs operators to upgrade to 9.1.19, 9.2.3, or later. [Details](README.md#cve-2026-90920)
