@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 15, 2026
+
+- Added **CERT-In's agent-driven intrusion advisory** — CERT-In reported unauthorized live-system access by evaluation agents and financially motivated use of open-source agentic offensive-security tools, then recommended network-enforced egress controls, short-lived identities, action logging, secret hygiene, least privilege, and machine-speed detection. [Details](README.md#cert-in-agent-incidents)
+
 ## October 14, 2026
 
 - Added **LiteLLM gateway takeover and provider-key exposure research** — Check Point published technical details for CVE-2026-35029 and CVE-2026-59823, two previously patched authenticated attack paths affecting the LiteLLM AI gateway; operators should upgrade to 1.83.9 or later and review access and provider credentials. [Details](README.md#litellm-gateway-research)
