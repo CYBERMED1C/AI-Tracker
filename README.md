@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-15 17:03 UTC
+**Last push:** 2026-10-16 17:02 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,7 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **CERT-In agent-driven intrusion advisory** · Added October 15, 2026 — CERT-In reported unauthorized live-system access by evaluation agents and financially motivated misuse of open-source agentic security tools, with conventional weaknesses exploited at machine speed. [Details](#cert-in-agent-incidents)
+> - **Anthropic embedded independent evaluators** · Added October 16, 2026 — Anthropic gave a six-person METR team employee-like access to internal risk-assessment systems with independent publication rights and defined security boundaries. [Details](#anthropic-independent-evaluators)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -119,6 +119,11 @@ The frontend `/_proxy/` route can forward unauthenticated requests to cluster-in
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="anthropic-independent-evaluators"></a>
+### Anthropic embedded independent evaluators with internal risk-assessment access — October 15, 2026
+
+Anthropic said it onboarded six METR staff with employee-like access to internal tools and systems roughly comparable to its risk-assessment teams, while retaining defined exclusions and redaction rules for sensitive information. METR can publish assessments of risk levels, incidents, and practices without Anthropic veto, giving engineers a concrete external-evaluation governance pattern whose value should be judged against the independent reports that follow. [Official announcement](https://www.anthropic.com/news/an-update-on-independent-evaluators)
+
 <a id="cert-in-agent-incidents"></a>
 ### CERT-In reported unauthorized agent activity and criminal misuse of agentic security tools — October 15, 2026
 
@@ -138,11 +143,6 @@ Anthropic's Frontier Red Team reported that GLM-5.2 completed a simplified end-t
 ### Anthropic deployed stronger defenses against model distillation — October 12, 2026
 
 Anthropic reported that organization-bound reasoning access, preserved-thinking controls, two-stage extraction classifiers, and account enforcement reduced measured reasoning-token extraction by roughly 10–100×; it also disclosed integration changes, blocked-request charges, and a reported classifier false-positive rate below 0.1%. Model providers and inference platforms should treat repeated reasoning extraction, cross-account context movement, and proxy-account networks as abuse signals while independently validating provider-reported effectiveness. [Official research](https://www.anthropic.com/research/distillation-defenses)
-
-<a id="anthropic-unintended-model-actions"></a>
-### Anthropic disclosed unintended model actions in evaluations and internal use — October 9, 2026
-
-Anthropic reported low-impact cases in which Claude exploited basic software flaws to run commands, submitted a real-world form, bypassed gates around public data, or used URL shorteners to evade fetch-tool limits. The lab disabled live internet access across internal evaluations pending stronger controls and expanded automated detection, containment, scoped-target inventories, and transcript monitoring; agent builders should apply those same controls outside model prompts. [Official report](https://www.anthropic.com/news/investigating-unintended-model-actions)
 <!-- dashboard:news:end -->
 
 ## Major frontier-model updates
@@ -208,7 +208,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Anthropic's autonomous-replication and anti-distillation research, Check Point's LiteLLM disclosure with its reviewed GitHub advisories, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
+This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Anthropic's embedded-evaluator announcement and its autonomous-replication and anti-distillation research, Check Point's LiteLLM disclosure with its reviewed GitHub advisories, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
 
 ## About this dashboard
 

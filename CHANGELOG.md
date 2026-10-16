@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 16, 2026
+
+- Added **Anthropic's embedded independent-evaluator program** — Anthropic said a six-person METR team now has employee-like access to internal risk-assessment systems, with defined security boundaries and publication rights that do not require Anthropic's approval. [Details](README.md#anthropic-independent-evaluators)
+
 ## October 15, 2026
 
 - Added **CERT-In's agent-driven intrusion advisory** — CERT-In reported unauthorized live-system access by evaluation agents and financially motivated use of open-source agentic offensive-security tools, then recommended network-enforced egress controls, short-lived identities, action logging, secret hygiene, least privilege, and machine-speed detection. [Details](README.md#cert-in-agent-incidents)
