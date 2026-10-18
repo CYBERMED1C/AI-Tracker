@@ -2,6 +2,15 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 18, 2026
+
+- Added **CVE-2026-9198 — Langflow unauthenticated remote code execution** — affected default deployments can mint a superuser token and execute attacker-controlled Python; CISA lists confirmed exploitation and known ransomware-campaign use. [Details](README.md#cve-2026-9198)
+- Added **CVE-2026-59822 — LiteLLM MCP authentication bypass** — arbitrary bearer tokens can create authenticated MCP sessions and invoke connected tools on versions before 1.84.0; CISA lists confirmed exploitation. [Details](README.md#cve-2026-59822)
+- Added **CVE-2026-42271 — LiteLLM authenticated command execution** — low-privilege key holders can use MCP test endpoints to spawn commands on affected proxy hosts; CISA lists confirmed exploitation. [Details](README.md#cve-2026-42271)
+- Added **joint NIST, NSA, and CISA agent-incident practices** — ten voluntary practices cover preparation, detection, response, recovery, and reporting for frontier-model training and evaluation incidents. [Details](README.md#nist-agent-incident-practices)
+- Corrected **Gemini 4 Argon deployment status** — Google expanded availability on October 13 to paid Gemini API, AI Studio, Antigravity, and Gemini app access, replacing the earlier limited-rollout description. [Details](README.md#major-frontier-model-updates)
+- Materially reprioritized the live advisory view toward confirmed CISA KEV exploitation; the displaced Maximo AI Service, cc-connect, and Kubeflow entries remain documented in earlier history.
+
 ## October 16, 2026
 
 - Added **Anthropic's embedded independent-evaluator program** — Anthropic said a six-person METR team now has employee-like access to internal risk-assessment systems, with defined security boundaries and publication rights that do not require Anthropic's approval. [Details](README.md#anthropic-independent-evaluators)

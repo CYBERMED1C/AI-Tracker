@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-17 17:02 UTC
+**Last push:** 2026-10-18 17:05 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,7 +16,9 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **Anthropic embedded independent evaluators** · Added October 16, 2026 — Anthropic gave a six-person METR team employee-like access to internal risk-assessment systems with independent publication rights and defined security boundaries. [Details](#anthropic-independent-evaluators)
+> - **Three CISA KEV-confirmed AI infrastructure vulnerabilities** · Added October 18, 2026 — LiteLLM MCP authentication bypass (CVE-2026-59822), Langflow unauthenticated remote code execution (CVE-2026-9198), and LiteLLM authenticated command execution (CVE-2026-42271) replaced lower-evidence entries in the live triage view. [Details](#current-ai-security-advisories)
+> - **Joint NIST, NSA, and CISA incident-response practices** · Added October 18, 2026 — Ten voluntary practices cover preparation, detection, response, recovery, and reporting for agent incidents during frontier-model training and evaluation. [Details](#nist-agent-incident-practices)
+> - **Gemini 4 Argon deployment expansion** · Added October 18, 2026 — Google expanded Argon from a trusted-defender rollout to paid Gemini API, AI Studio, Antigravity, and Gemini app access. [Details](#major-frontier-model-updates)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -30,13 +32,28 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 
 | Product and risk | Exploitation | Affected → target | Immediate action |
 | --- | --- | --- | --- |
+| [Langflow: unauthenticated RCE](#cve-2026-9198) | 🔴 CISA KEV; ransomware use listed | 1.0.0–1.10.0 → **1.10.1+** | Patch now; isolate exposed instances; investigate token minting and code execution |
 | [MLflow: webhook SSRF](#cve-2026-64849) | 🔴 CISA KEV | 3.10.0–3.14.x → **3.16.0+** | Patch; restrict Tracking Server; investigate unexpected webhook activity |
 | [Ray: browser-assisted RCE](#cve-2025-62593) | 🔴 CISA KEV | <2.52.0 → **2.52.0+** | Patch; enable token auth; investigate unauthorized jobs |
-| [IBM Maximo AI Service: remote code execution](#cve-2026-90920) | 🟡 Not established | 9.1.0 or 9.2.0 → **9.1.19+ or 9.2.3+** | Upgrade now; restrict access; investigate unexpected code execution |
-| [cc-connect: MAX webhook auth bypass](#cve-2026-108549) | 🟠 Public details | ≤1.5.0 with exposed MAX webhook and no secret → **No fixed release established** | Configure a webhook secret; restrict or disable the listener |
-| [Kubeflow Pipelines: pre-auth SSRF](#cve-2026-54745) | 🟠 Public PoC | Frontend ≤2.16.0 → **2.17.0+** | Patch; block untrusted frontend access and sensitive egress |
+| [LiteLLM: MCP authentication bypass](#cve-2026-59822) | 🔴 CISA KEV | <1.84.0 → **1.84.0+** | Patch or block MCP routes; review tool calls and connected-service access |
+| [LiteLLM: authenticated command execution](#cve-2026-42271) | 🔴 CISA KEV | 1.74.2–1.83.6 → **1.83.7+** | Patch or block MCP test endpoints; investigate proxy-host subprocesses |
 
 ---
+
+<a id="cve-2026-9198"></a>
+### 🔴 Langflow unauthenticated remote code execution
+
+**Severity:** Critical — 9.8/10 (CVSS 3.1; source: IBM)  
+**Vulnerability ID:** CVE-2026-9198  
+**Vendor bulletin published:** July 2, 2026 · **Modified:** August 17, 2026
+
+Default Langflow deployments exposed an auto-login endpoint that minted a superuser bearer token to any network caller and a validation endpoint that executed attacker-controlled Python code; chaining them gives an unauthenticated attacker code execution on the host.
+
+- **Exposed if:** Langflow OSS 1.0.0 through 1.10.0 is deployed and its default auto-login and code-validation endpoints are network-reachable.
+- **Do now:** Upgrade to **1.10.1 or later**. IBM lists no workaround, so isolate unpatched instances from untrusted networks and follow incident-response procedures if exposure existed.
+- **Look for:** Requests to `/api/v1/auto_login` followed by `/api/v1/validate/code`, unexpected superuser tokens, or unfamiliar processes and outbound connections from Langflow.
+- **Exploitation:** CISA added this CVE to KEV on **August 4, 2026** and lists known ransomware-campaign use.
+- **Evidence:** [IBM security bulletin](https://www.ibm.com/support/pages/security-bulletin-unauthenticated-remote-code-execution-auto-login-bypass-and-code-validation) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-9198)
 
 <a id="cve-2026-64849"></a>
 ### 🔴 MLflow webhook SSRF
@@ -68,57 +85,45 @@ A malicious webpage can combine DNS rebinding with weak browser-request checks t
 - **Exploitation:** CISA added this CVE to KEV on **August 17, 2026**, confirming in-the-wild exploitation.
 - **Evidence:** [Maintainer advisory](https://github.com/ray-project/ray/security/advisories/GHSA-q279-jhrf-cc6v) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-62593)
 
-<a id="cve-2026-90920"></a>
-### 🟡 IBM Maximo AI Service remote code execution
+<a id="cve-2026-59822"></a>
+### 🔴 LiteLLM MCP authentication bypass
 
-**Severity:** Critical — 9.8/10 (CVSS 3.1; source: IBM CNA record)  
-**Vulnerability ID:** CVE-2026-90920  
-**CVE record published:** October 12, 2026
+**Severity:** High — 8.8/10 (CVSS 4.0; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-59822  
+**Published:** June 30, 2026
 
-IBM reports that affected Maximo AI Service releases can let a remote, unauthenticated attacker execute arbitrary code because generated code is not properly controlled. The vendor-assigned vector is network-accessible, low-complexity, requires no privileges, and needs no user interaction.
+A failed LiteLLM key-validation path could fall back to an empty authorization object, allowing an unauthenticated attacker with an arbitrary bearer token to establish an MCP session, enumerate configured tools, call them, and reach connected services.
 
-- **Exposed if:** IBM Maximo AI Service 9.1.0 or 9.2.0 is deployed.
-- **Do now:** Upgrade 9.1 deployments to **9.1.19 or later** and 9.2 deployments to **9.2.3 or later**; restrict service access until upgraded and investigate unexpected child processes, code execution, or configuration changes.
-- **Look for:** Unfamiliar processes launched by the service, anomalous code-generation requests, unexpected outbound connections, or changes to service files and configuration.
-- **Exploitation:** CISA's ADP enrichment marked exploitation **none** on October 13, 2026; in-the-wild exploitation and a public exploit are **not established**.
-- **Evidence:** [IBM security bulletin](https://www.ibm.com/support/pages/node/7290833) · [Official CVE record](https://github.com/CVEProject/cvelistV5/blob/main/cves/2026/90xxx/CVE-2026-90920.json)
+- **Exposed if:** LiteLLM before 1.84.0 exposes MCP Streamable HTTP endpoints to an untrusted network.
+- **Do now:** Upgrade to **1.84.0 or later**. If patching is delayed, disable MCP routes or block `/mcp/` and related MCP endpoints at the reverse proxy or API gateway.
+- **Look for:** Invalid or unfamiliar bearer tokens followed by MCP session creation, tool enumeration, tool calls, or access to connected services.
+- **Exploitation:** CISA added this CVE to KEV on **September 2, 2026**, confirming in-the-wild exploitation.
+- **Evidence:** [Maintainer advisory](https://github.com/BerriAI/litellm/security/advisories/GHSA-7488-6r32-c95q) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-59822)
 
-<a id="cve-2026-108549"></a>
-### 🟠 cc-connect MAX webhook authentication bypass to host command execution
+<a id="cve-2026-42271"></a>
+### 🔴 LiteLLM authenticated command execution
 
-**Severity:** Critical — 9.2/10 (CVSS 4.0; source: GitHub Advisory Database, unreviewed)  
-**Vulnerability ID:** CVE-2026-108549  
-**Published:** October 10, 2026
+**Severity:** High — 8.7/10 (CVSS 4.0; source: maintainer advisory)  
+**Vulnerability ID:** CVE-2026-42271  
+**Published:** April 21, 2026
 
-cc-connect bridges local AI coding agents—including Claude Code, Cursor, Gemini CLI, and Codex—to messaging platforms. In affected MAX webhook deployments, an attacker who can reach the listener can forge an allowed or admin sender identity and invoke privileged commands such as `/shell` on the host.
+Two MCP preview endpoints accepted attacker-controlled stdio `command`, `args`, and `env` fields and spawned the supplied command with the proxy process's privileges. Any authenticated user, including a low-privilege internal key holder, could invoke them.
 
-- **Exposed if:** cc-connect 1.5.0 or earlier uses MAX webhook mode, the listener is reachable, and `webhook_secret` is empty.
-- **Do now:** Configure a strong `webhook_secret`; block untrusted access to the listener or disable MAX webhook mode until an upstream fixed release is established. The proposed fix remains unmerged, so do not treat prerelease version numbers alone as remediation.
-- **Fixed version:** **Not established.**
-- **Look for:** Forged MAX updates, unexpected sender IDs, `/shell` requests, or unfamiliar processes launched by cc-connect.
-- **Exploitation:** Public technical details and a proposed patch are available; **in-the-wild exploitation status is not established**.
-- **Evidence:** [GitHub advisory](https://github.com/advisories/GHSA-h8j8-r6g6-37hc) · [Upstream issue](https://github.com/chenhg5/cc-connect/issues/1968) · [Proposed fix](https://github.com/chenhg5/cc-connect/pull/1969)
-
-<a id="cve-2026-54745"></a>
-### 🟠 Kubeflow Pipelines pre-auth SSRF and HTTP smuggling
-
-**Severity:** Critical — 10.0/10 (CVSS 3.1; source: maintainer advisory)  
-**Vulnerability ID:** CVE-2026-54745  
-**Published:** July 12, 2026
-
-The frontend `/_proxy/` route can forward unauthenticated requests to cluster-internal services—even when `ENABLE_AUTHZ=true`—putting cloud credentials and internal APIs at risk.
-
-- **Exposed if:** An untrusted user can reach `kfp-frontend` 2.16.0 or earlier.
-- **Do now:** Upgrade to **2.17.0 or later**; block untrusted access and egress to metadata or sensitive internal destinations.
-- **Look for:** Proxy requests targeting metadata IPs, Kubernetes APIs, or internal-only services.
-- **Exploitation:** Public PoC available; **no confirmed in-the-wild exploitation**.
-- **Evidence:** [Maintainer advisory](https://github.com/kubeflow/pipelines/security/advisories/GHSA-gqww-5pj5-8fq7)
-
+- **Exposed if:** LiteLLM 1.74.2 through 1.83.6 is reachable by an untrusted authenticated user.
+- **Do now:** Upgrade to **1.83.7 or later**. If patching is delayed, block POST requests to `/mcp-rest/test/connection` and `/mcp-rest/test/tools/list`.
+- **Look for:** Calls to those test endpoints, suspicious stdio configurations, or unfamiliar subprocesses launched by the LiteLLM proxy.
+- **Exploitation:** CISA added this CVE to KEV on **June 8, 2026**, confirming in-the-wild exploitation.
+- **Evidence:** [Maintainer advisory](https://github.com/BerriAI/litellm/security/advisories/GHSA-v4p8-mg3p-g94g) · [CISA KEV entry](https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-42271)
 <!-- dashboard:advisories:end -->
 
 ## AI security research, defensive tools, and significant releases
 
 <!-- dashboard:news:start -->
+<a id="nist-agent-incident-practices"></a>
+### NIST, NSA, and CISA published incident-response practices for frontier-model training and evaluation — October 16, 2026
+
+The agencies published ten voluntary practices organized across preparation, detection, response, recovery, and reporting for incidents in which agents take significant uninstructed actions outside operator controls. Engineering teams can translate the guidance into least-privilege and single-use infrastructure, network allowlists and kill mechanisms, tamper-resistant evidence collection, credential revocation, known-good rebuilds, containment validation before resuming, coordinated notification, and public sharing. [NIST announcement](https://www.nist.gov/news-events/news/2026/10/key-practices-incident-readiness-and-response-super-intelligence-training) · [Joint publication](https://www.nist.gov/document/keypracticesforincidentreadinessandresponseinsuperintelligence-trainingandevaluation)
+
 <a id="anthropic-independent-evaluators"></a>
 ### Anthropic embedded independent evaluators with internal risk-assessment access — October 15, 2026
 
@@ -138,11 +143,6 @@ Check Point published its coordinated-disclosure research on two previously patc
 ### Anthropic evaluated autonomous model replication across heterogeneous devices — October 12, 2026
 
 Anthropic's Frontier Red Team reported that GLM-5.2 completed a simplified end-to-end replication task across eight nodes in four of five trials, while a 9B model separately established inference on eight of nine tested hardware types. This is a controlled evaluation—not evidence of a real-world AI worm—but it gives defenders concrete reasons to isolate inference credentials, restrict lateral paths, harden edge devices, and monitor unauthorized model deployment. [Official research](https://www.anthropic.com/research/self-replicating-ai)
-
-<a id="anthropic-distillation-defenses"></a>
-### Anthropic deployed stronger defenses against model distillation — October 12, 2026
-
-Anthropic reported that organization-bound reasoning access, preserved-thinking controls, two-stage extraction classifiers, and account enforcement reduced measured reasoning-token extraction by roughly 10–100×; it also disclosed integration changes, blocked-request charges, and a reported classifier false-positive rate below 0.1%. Model providers and inference platforms should treat repeated reasoning extraction, cross-account context movement, and proxy-account networks as abuse signals while independently validating provider-reported effectiveness. [Official research](https://www.anthropic.com/research/distillation-defenses)
 <!-- dashboard:news:end -->
 
 ## Major frontier-model updates
@@ -152,7 +152,7 @@ Anthropic reported that organization-bound reasoning access, preserved-thinking 
 | --- | --- | --- | --- |
 | GPT-6 Sol and Luna — October update | OpenAI began a global ChatGPT rollout: Sol serves Plus, Pro, Business, and Enterprise, while Luna serves Free and Go. The new system card classifies both as High—but below Critical—for cybersecurity and biological/chemical capability, reports stronger jailbreak resistance than GPT-5.6, and notes that Work and Codex remain on the September versions. | 2026-10-07 | [OpenAI release](https://openai.com/index/gpt-6-for-everyone/) · [System card](https://deploymentsafety.openai.com/gpt-6-october) |
 | Claude Haiku 5.5 | Anthropic released its fastest and lowest-cost small model for high-volume tasks, subagents, browser use, and computer use. It adds adjustable effort and stronger cyber safeguards than Haiku 4.5 while permitting more defensive work than Sonnet 5.5; engineers should review the system card and re-run task-specific safety and reliability evaluations before migration. | 2026-10-07 | [Anthropic](https://www.anthropic.com/claude-haiku-5-5) |
-| Gemini 4 Argon | Google announced a long-horizon frontier model with a 1 million-token limit for software engineering, enterprise work, and autonomous defensive vulnerability patching. Access is initially limited to trusted defenders through Fairwind while Google expands safeguards and pre-release review. | 2026-09-30 | [Google](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) |
+| Gemini 4 Argon — expanded deployment | Google expanded Argon beyond its initial trusted-defender rollout to paid Gemini API access, AI Studio for Google AI Ultra subscribers, Antigravity, and Gemini app access for Pro and Ultra subscribers. The deployment change matters for production migration and threat modeling because the long-horizon model is now broadly reachable by developers and agentic applications. | 2026-10-13 | [Initial announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) · [Developer availability](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/) · [Gemini app availability](https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/) |
 | GPT-6.1 Sol | OpenAI released an API and Work/Codex model that approaches Astra on agentic coding, computer use, and professional work at substantially lower cost. Its system-card addendum classifies it as Critical for cybersecurity capability and applies Astra’s safeguards stack. | 2026-09-29 | [OpenAI](https://openai.com/index/introducing-gpt-6-1-sol/) |
 | Claude Sonnet 5.5 | Anthropic released a faster, more efficient Sonnet with large agentic-coding gains and new cyber safeguards, fallbacks, and reasoning-extraction defenses. Engineers should review the `between_tools` migration requirement when thinking is disabled. | 2026-09-28 | [Anthropic](https://www.anthropic.com/claude-sonnet-5-5) |
 <!-- dashboard:models:end -->
@@ -208,7 +208,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the IBM-assigned CVE record and linked security bulletin, the underlying maintainer advisories, CISA's official `cisagov/kev-data` mirror, official model release pages and system cards, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Anthropic's embedded-evaluator announcement and its autonomous-replication and anti-distillation research, Check Point's LiteLLM disclosure with its reviewed GitHub advisories, and White House executive orders. It distinguishes controlled evaluation results from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant maintainer advisory; no section was left unverified.
+This review opened the relevant maintainer and vendor advisories, IBM's Langflow bulletin, CISA's official `cisagov/kev-data` mirror, NIST's joint incident-response publication, official model-release and deployment pages, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Check Point's LiteLLM disclosure, and the current White House executive-order index and order texts. It distinguishes controlled evaluations from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant primary advisory; no section was left unverified.
 
 ## About this dashboard
 
