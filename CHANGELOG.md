@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 20, 2026
+
+- Added **Anthropic frontier-security roadmap milestones** — Anthropic reported an automated red-teaming system that matched or exceeded the best human submission across 24 classifier tests, a production inference-verification prototype, and new datacenter and platform-security goals; the dashboard labels these as self-reported and notes that fuller red-team details are still planned. [Details](README.md#anthropic-frontier-safety-roadmap)
+
 ## October 18, 2026
 
 - Added **CVE-2026-9198 — Langflow unauthenticated remote code execution** — affected default deployments can mint a superuser token and execute attacker-controlled Python; CISA lists confirmed exploitation and known ransomware-campaign use. [Details](README.md#cve-2026-9198)

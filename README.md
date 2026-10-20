@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-19 17:04 UTC
+**Last push:** 2026-10-20 17:05 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,9 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **Three CISA KEV-confirmed AI infrastructure vulnerabilities** · Added October 18, 2026 — LiteLLM MCP authentication bypass (CVE-2026-59822), Langflow unauthenticated remote code execution (CVE-2026-9198), and LiteLLM authenticated command execution (CVE-2026-42271) replaced lower-evidence entries in the live triage view. [Details](#current-ai-security-advisories)
-> - **Joint NIST, NSA, and CISA incident-response practices** · Added October 18, 2026 — Ten voluntary practices cover preparation, detection, response, recovery, and reporting for agent incidents during frontier-model training and evaluation. [Details](#nist-agent-incident-practices)
-> - **Gemini 4 Argon deployment expansion** · Added October 18, 2026 — Google expanded Argon from a trusted-defender rollout to paid Gemini API, AI Studio, Antigravity, and Gemini app access. [Details](#major-frontier-model-updates)
+> - **Anthropic automated red-teaming and inference-verification milestones** · Added October 20, 2026 — Anthropic reported 24 classifier red-team comparisons, a production inference-verification prototype, and new datacenter and platform-security goals. [Details](#anthropic-frontier-safety-roadmap)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -139,10 +137,10 @@ CERT-In reported that AI agents under research and evaluation exceeded assigned 
 
 Check Point published its coordinated-disclosure research on two previously patched LiteLLM flaws: CVE-2026-35029 let authenticated low-privilege users reach administrative configuration paths that could enable file access, account takeover, and remote code execution, while CVE-2026-59823 let authenticated callers redirect provider traffic through SSRF and expose API credentials. The demonstrations were controlled tests—not evidence of in-the-wild exploitation—and operators should inventory embedded LiteLLM instances, upgrade to **1.83.9 or later**, review low-privilege access, and rotate provider keys if compromise is suspected. [Original research](https://research.checkpoint.com/2026/when-llm-gateways-go-wrong-findings-from-litellm/) · [CVE-2026-35029 advisory](https://github.com/advisories/GHSA-53mr-6c8q-9789) · [CVE-2026-59823 advisory](https://github.com/advisories/GHSA-hx8v-g79f-8w5f)
 
-<a id="anthropic-self-replication"></a>
-### Anthropic evaluated autonomous model replication across heterogeneous devices — October 12, 2026
+<a id="anthropic-frontier-safety-roadmap"></a>
+### Anthropic reported automated red-teaming and inference-verification milestones — October 19, 2026
 
-Anthropic's Frontier Red Team reported that GLM-5.2 completed a simplified end-to-end replication task across eight nodes in four of five trials, while a 9B model separately established inference on eight of nine tested hardware types. This is a controlled evaluation—not evidence of a real-world AI worm—but it gives defenders concrete reasons to isolate inference credentials, restrict lateral paths, harden edge devices, and monitor unauthorized model deployment. [Official research](https://www.anthropic.com/research/self-replicating-ai)
+Anthropic said an automated red-teaming system matched or exceeded the best human bug-bounty submission on all 24 tested question/classifier pairs, winning 23, in 24–48 hours; it also reported a production inference-verification prototype that checks outputs against a specified model-weight set. The company added datacenter physical-security and platform-security targets. These are self-reported milestones, and Anthropic says a fuller red-teaming report is still planned. [Frontier Safety Roadmap](https://www.anthropic.com/responsible-scaling-policy/roadmap)
 <!-- dashboard:news:end -->
 
 ## Major frontier-model updates
