@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-20 17:05 UTC
+**Last push:** 2026-10-21 17:04 UTC
 **Overall health:** Healthy
 
 ---
@@ -16,7 +16,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **Anthropic automated red-teaming and inference-verification milestones** · Added October 20, 2026 — Anthropic reported 24 classifier red-team comparisons, a production inference-verification prototype, and new datacenter and platform-security goals. [Details](#anthropic-frontier-safety-roadmap)
+> - **OpenAI models and Codex on Google Cloud** · Added October 21, 2026 — OpenAI and Google announced private-preview access to GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna through Google Cloud's model garden, with broader availability planned. [Details](#major-frontier-model-updates)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -148,11 +148,11 @@ Anthropic said an automated red-teaming system matched or exceeded the best huma
 <!-- dashboard:models:start -->
 | Major model or deployment update | What changed and why engineers should care | Announced | Official source |
 | --- | --- | --- | --- |
+| OpenAI models and Codex on Google Cloud | OpenAI and Google announced that GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna are rolling out in private preview to selected enterprise customers through Google Cloud's model garden, with Codex CLI and Desktop workflows able to connect for inference. The deployment adds Google Cloud identity, audit, governance, and marketplace controls; general availability is planned in the coming weeks, so teams should distinguish today's preview from future broad availability. | 2026-10-21 | [OpenAI](https://openai.com/index/openai-models-google-cloud/) · [Google Cloud](https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers) |
+| Gemini 4 Argon — expanded deployment | Google expanded Argon beyond its initial trusted-defender rollout to paid Gemini API access, AI Studio for Google AI Ultra subscribers, Antigravity, and Gemini app access for Pro and Ultra subscribers. The deployment change matters for production migration and threat modeling because the long-horizon model is now broadly reachable by developers and agentic applications. | 2026-10-13 | [Initial announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) · [Developer availability](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/) · [Gemini app availability](https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/) |
 | GPT-6 Sol and Luna — October update | OpenAI began a global ChatGPT rollout: Sol serves Plus, Pro, Business, and Enterprise, while Luna serves Free and Go. The new system card classifies both as High—but below Critical—for cybersecurity and biological/chemical capability, reports stronger jailbreak resistance than GPT-5.6, and notes that Work and Codex remain on the September versions. | 2026-10-07 | [OpenAI release](https://openai.com/index/gpt-6-for-everyone/) · [System card](https://deploymentsafety.openai.com/gpt-6-october) |
 | Claude Haiku 5.5 | Anthropic released its fastest and lowest-cost small model for high-volume tasks, subagents, browser use, and computer use. It adds adjustable effort and stronger cyber safeguards than Haiku 4.5 while permitting more defensive work than Sonnet 5.5; engineers should review the system card and re-run task-specific safety and reliability evaluations before migration. | 2026-10-07 | [Anthropic](https://www.anthropic.com/claude-haiku-5-5) |
-| Gemini 4 Argon — expanded deployment | Google expanded Argon beyond its initial trusted-defender rollout to paid Gemini API access, AI Studio for Google AI Ultra subscribers, Antigravity, and Gemini app access for Pro and Ultra subscribers. The deployment change matters for production migration and threat modeling because the long-horizon model is now broadly reachable by developers and agentic applications. | 2026-10-13 | [Initial announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/) · [Developer availability](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/) · [Gemini app availability](https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/) |
-| GPT-6.1 Sol | OpenAI released an API and Work/Codex model that approaches Astra on agentic coding, computer use, and professional work at substantially lower cost. Its system-card addendum classifies it as Critical for cybersecurity capability and applies Astra’s safeguards stack. | 2026-09-29 | [OpenAI](https://openai.com/index/introducing-gpt-6-1-sol/) |
-| Claude Sonnet 5.5 | Anthropic released a faster, more efficient Sonnet with large agentic-coding gains and new cyber safeguards, fallbacks, and reasoning-extraction defenses. Engineers should review the `between_tools` migration requirement when thinking is disabled. | 2026-09-28 | [Anthropic](https://www.anthropic.com/claude-sonnet-5-5) |
+| GPT-6.1 Sol | OpenAI released an API and Work/Codex model that approaches Astra on agentic coding, computer use, and professional work at substantially lower cost. Its system-card addendum classifies it as Critical for cybersecurity capability and applies Astra's safeguards stack. | 2026-09-29 | [OpenAI](https://openai.com/index/introducing-gpt-6-1-sol/) |
 <!-- dashboard:models:end -->
 
 ## AI-related executive orders

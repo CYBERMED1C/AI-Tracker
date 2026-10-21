@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 21, 2026
+
+- Added **OpenAI models and Codex on Google Cloud** — OpenAI and Google announced private-preview access to GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna through Google Cloud's model garden, including Codex workflow connectivity and Google Cloud governance controls; general availability is planned for the coming weeks. [Details](README.md#major-frontier-model-updates)
+
 ## October 20, 2026
 
 - Added **Anthropic frontier-security roadmap milestones** — Anthropic reported an automated red-teaming system that matched or exceeded the best human submission across 24 classifier tests, a production inference-verification prototype, and new datacenter and platform-security goals; the dashboard labels these as self-reported and notes that fuller red-team details are still planned. [Details](README.md#anthropic-frontier-safety-roadmap)
