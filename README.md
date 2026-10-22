@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **TLP:CLEAR**
+>
+> All included data was obtained from publicly available sources.
+
 ## Live status
 
 🟢 **Operational**
