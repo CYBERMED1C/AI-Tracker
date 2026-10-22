@@ -1,16 +1,16 @@
-> [!IMPORTANT]
-> **TLP:CLEAR**
->
-> All included data was obtained from publicly available sources.
-
 ## Live status
 
 🟢 **Operational**
 
-**Last push:** 2026-10-21 17:04 UTC
+**Last push:** 2026-10-22 17:03 UTC
 **Overall health:** Healthy
 
 ---
+
+> [!IMPORTANT]
+> **TLP:CLEAR**
+>
+> All included data was obtained from publicly available sources.
 
 # AI Security Intelligence Dashboard
 
