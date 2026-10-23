@@ -2,7 +2,7 @@
 
 🟢 **Operational**
 
-**Last push:** 2026-10-22 17:03 UTC
+**Last push:** 2026-10-23 17:04 UTC
 **Overall health:** Healthy
 
 ---
@@ -21,7 +21,7 @@ A source-linked learning dashboard for AI engineers and security teams. It prior
 > Treat this as a dated informational snapshot, not as a substitute for vendor advisories or your own asset inventory. Open each source and verify that its affected versions and mitigations match your deployment.
 >
 > **Last added:**
-> - **OpenAI models and Codex on Google Cloud** · Added October 21, 2026 — OpenAI and Google announced private-preview access to GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna through Google Cloud's model garden, with broader availability planned. [Details](#major-frontier-model-updates)
+> - **OpenAI Patch the Planet coordinated-response framework** · Added October 23, 2026 — OpenAI described a five-stage disclosure and response model after its coalition helped PHP maintainers remediate two critical unauthenticated RCEs discovered with frontier-model assistance. [Details](#openai-patch-the-planet)
 >
 > See the complete [update history](CHANGELOG.md).
 <!-- dashboard:updated:end -->
@@ -127,10 +127,10 @@ Two MCP preview endpoints accepted attacker-controlled stdio `command`, `args`, 
 
 The agencies published ten voluntary practices organized across preparation, detection, response, recovery, and reporting for incidents in which agents take significant uninstructed actions outside operator controls. Engineering teams can translate the guidance into least-privilege and single-use infrastructure, network allowlists and kill mechanisms, tamper-resistant evidence collection, credential revocation, known-good rebuilds, containment validation before resuming, coordinated notification, and public sharing. [NIST announcement](https://www.nist.gov/news-events/news/2026/10/key-practices-incident-readiness-and-response-super-intelligence-training) · [Joint publication](https://www.nist.gov/document/keypracticesforincidentreadinessandresponseinsuperintelligence-trainingandevaluation)
 
-<a id="anthropic-independent-evaluators"></a>
-### Anthropic embedded independent evaluators with internal risk-assessment access — October 15, 2026
+<a id="openai-patch-the-planet"></a>
+### OpenAI published a coordinated-response framework after AI-assisted PHP vulnerability discovery — October 21, 2026
 
-Anthropic said it onboarded six METR staff with employee-like access to internal tools and systems roughly comparable to its risk-assessment teams, while retaining defined exclusions and redaction rules for sensitive information. METR can publish assessments of risk levels, incidents, and practices without Anthropic veto, giving engineers a concrete external-evaluation governance pattern whose value should be judged against the independent reports that follow. [Official announcement](https://www.anthropic.com/news/an-update-on-independent-evaluators)
+OpenAI said its Patch the Planet coalition helped PHP maintainers and infrastructure partners validate, fix, adversarially test, and coordinate disclosure of two critical unauthenticated RCEs discovered with frontier-model assistance. PHP independently confirms CVE-2026-109618 and CVE-2026-109619, affected web-serving installations, and fixed releases 8.2.35, 8.3.36, 8.4.27, and 8.5.12; OpenAI's proposed five-stage model is useful preparation for higher-volume AI-assisted vulnerability discovery, but it is not an industry standard. [OpenAI disclosure](https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/) · [PHP advisory](https://www.php.net/archive/2026.php)
 
 <a id="cert-in-agent-incidents"></a>
 ### CERT-In reported unauthorized agent activity and criminal misuse of agentic security tools — October 15, 2026
@@ -211,7 +211,7 @@ These are executive orders—not memoranda, fact sheets, or speeches—and are l
 
 ## Verification notes
 
-This review opened the relevant maintainer and vendor advisories, IBM's Langflow bulletin, CISA's official `cisagov/kev-data` mirror, NIST's joint incident-response publication, official model-release and deployment pages, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Check Point's LiteLLM disclosure, and the current White House executive-order index and order texts. It distinguishes controlled evaluations from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant primary advisory; no section was left unverified.
+This review opened the relevant maintainer and vendor advisories, IBM's Langflow bulletin, CISA's official `cisagov/kev-data` mirror, NIST's joint incident-response publication, official model-release and deployment pages, laboratory and provider disclosures, CERT-In's agent-driven incident advisory, Check Point's LiteLLM disclosure, OpenAI's Patch the Planet disclosure, PHP's matching security advisory, and the current White House executive-order index and order texts. It distinguishes controlled evaluations from real-world incidents, confirmed exploitation from public proof-of-concept material, and attributes each published CVSS score to its source. CISA's website feed blocked direct retrieval, so KEV claims were cross-checked against CISA's official GitHub mirror plus the relevant primary advisory; no section was left unverified.
 
 ## About this dashboard
 

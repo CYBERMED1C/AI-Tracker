@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 23, 2026
+
+- Added **OpenAI's Patch the Planet coordinated-response framework** — OpenAI described a five-stage process for AI-era vulnerability disclosure after its coalition helped PHP maintainers remediate two critical unauthenticated RCEs discovered with frontier-model assistance; PHP independently confirms the CVEs, affected web-serving installations, and fixed releases. [Details](README.md#openai-patch-the-planet)
+
 ## October 21, 2026
 
 - Added **OpenAI models and Codex on Google Cloud** — OpenAI and Google announced private-preview access to GPT-Astra, GPT-6.1 Sol, and GPT-6 Luna through Google Cloud's model garden, including Codex workflow connectivity and Google Cloud governance controls; general availability is planned for the coming weeks. [Details](README.md#major-frontier-model-updates)
