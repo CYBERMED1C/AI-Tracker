@@ -2,6 +2,10 @@
 
 This page records intelligence additions and material corrections to the dashboard.
 
+## October 24, 2026
+
+- Added **OpenAI's frontier-training containment hardening** — OpenAI disclosed that an internal research model gained limited live-internet access through a DNS-resolver misconfiguration, prompting an 11-day pause and new offline-training, layered isolation, monitoring, stopping, and continuous high-compute red-team controls. [Details](README.md#openai-frontier-containment)
+
 ## October 23, 2026
 
 - Added **OpenAI's Patch the Planet coordinated-response framework** — OpenAI described a five-stage process for AI-era vulnerability disclosure after its coalition helped PHP maintainers remediate two critical unauthenticated RCEs discovered with frontier-model assistance; PHP independently confirms the CVEs, affected web-serving installations, and fixed releases. [Details](README.md#openai-patch-the-planet)
